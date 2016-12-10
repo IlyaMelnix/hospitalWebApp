@@ -10,41 +10,32 @@ import java.sql.*;
 public class Main {
 
 
-    private static final String URL = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-
     public static void main (String[] args) {
 
+        DBWorker worker = new DBWorker();
+        String query = "SELECT * FROM USER";
         try {
+            Statement statement = worker.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
 
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
+            while (resultSet.next())
+            {
+                User user = new User();
+                user.setIduser(resultSet.getInt("iduser"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setName(resultSet.getString("name"));
+                user.setSurname(resultSet.getString("surname"));
+                user.setPatronimyc(resultSet.getString("patronymic"));
+                user.setStatus(resultSet.getInt("status"));
+                user.setDiagnosis(resultSet.getString("diagnosis"));
 
-        } catch (SQLException e) {
-
-            System.err.println("Не удалось загрузить класс драйвера!");
-        }
-
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             Statement statement = connection.createStatement();
-        ){
-            if (!connection.isClosed()){
-
-                System.out.println("Соединение с БД установлено!");
+                System.out.println(user);
             }
-
-            //statement.execute("INSERT INTO `hospital`.`drug` (`drugName`, `drugDesc`, `drugDosing`, `user_iduser`) VALUES ('ЛИНЕКС ', 'пор внутр 1.5г N10 (Лек, Словения)', 'По 1 пак. 1 раз в день', '3');");
-            ResultSet res = statement.executeQuery("SELECT * FROM hospital.drug");
-            connection.close();
-            if (connection.isClosed()){
-
-                System.out.println("Соединение с БД закрыто!");
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
     }
 }
