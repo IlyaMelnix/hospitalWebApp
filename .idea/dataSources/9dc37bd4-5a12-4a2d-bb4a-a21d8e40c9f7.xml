@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="hospital@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="hospital">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="drug"/>
+    <table id="8" parent="2" name="operation"/>
+    <table id="9" parent="2" name="procedure"/>
+    <table id="10" parent="2" name="user"/>
+    <column id="11" parent="7" name="iddrug">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="12" parent="7" name="drugName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="7" name="drugDesc">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="14" parent="7" name="drugDosing">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="7" name="user_iduser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="16" parent="7" name="fk_drug_user1_idx">
+      <ColNames>user_iduser</ColNames>
+    </index>
+    <key id="17" parent="7" name="PRIMARY">
+      <ColNames>iddrug</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="18" parent="7" name="fk_drug_user1">
+      <ColNames>user_iduser</ColNames>
+      <RefSchemaName>hospital</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>iduser</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="19" parent="8" name="idoperation">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="8" name="operationName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="8" name="operationDesc">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="22" parent="8" name="operationDate">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="8" name="user_iduser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="24" parent="8" name="fk_operation_user1_idx">
+      <ColNames>user_iduser</ColNames>
+    </index>
+    <key id="25" parent="8" name="PRIMARY">
+      <ColNames>idoperation</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="26" parent="8" name="fk_operation_user1">
+      <ColNames>user_iduser</ColNames>
+      <RefSchemaName>hospital</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>iduser</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="27" parent="9" name="idprocedure">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="9" name="procedureName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="9" name="procedureDesc">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="30" parent="9" name="procedureDuration">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="31" parent="9" name="procedureStartDate">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="9" name="procedureHowManyTimes">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="9" name="user_iduser">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="9" name="fk_procedure_user_idx">
+      <ColNames>user_iduser</ColNames>
+    </index>
+    <key id="35" parent="9" name="PRIMARY">
+      <ColNames>idprocedure</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="9" name="fk_procedure_user">
+      <ColNames>user_iduser</ColNames>
+      <RefSchemaName>hospital</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>iduser</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="37" parent="10" name="iduser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="10" name="username">
+      <Position>2</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="39" parent="10" name="password">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="40" parent="10" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="10" name="surname">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="10" name="patronymic">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="43" parent="10" name="status">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="44" parent="10" name="diagnosis">
+      <Position>8</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="45" parent="10" name="usercol">
+      <Position>9</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="46" parent="10" name="PRIMARY">
+      <ColNames>iduser</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
