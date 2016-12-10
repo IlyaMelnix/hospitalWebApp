@@ -12,21 +12,18 @@ public class DBWorker {
 
     private Connection connection;
 
-    public DBWorker() {
-        try
-        {
+    public DBWorker() throws SQLException {
+
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (!connection.isClosed()){
 
                 System.out.println("Соединение с БД установлено!");
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public Connection getConnection() {
         return connection;
     }
+
 }
