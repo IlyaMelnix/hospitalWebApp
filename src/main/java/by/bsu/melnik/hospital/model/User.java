@@ -1,8 +1,6 @@
-package by.bsu.melnik.hospital;
+package by.bsu.melnik.hospital.model;
 
-/**
- * Created by ilyah on 10.12.2016.
- */
+
 public class User {
 
     // FIELDS
@@ -16,7 +14,7 @@ public class User {
     private String diagnosis;
 
 
-    //CONSTRUCTORS
+    // CONSTRUCTORS
     public User() {
     }
     public User(int iduser, int status, String username, String password, String name, String surname, String patronimyc, String diagnosis) {

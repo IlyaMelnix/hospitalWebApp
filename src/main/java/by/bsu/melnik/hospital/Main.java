@@ -1,12 +1,11 @@
 package by.bsu.melnik.hospital;
 
+import by.bsu.melnik.hospital.model.User;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-/**
- * Created by ilyah on 10.12.2016.
- */
+
 public class Main {
 
     private static final String INSERT_NEW_USER = "INSERT INTO `hospital`.`user` (`username`, `password`, `name`, `surname`, `patronymic`, `status`, `diagnosis`) VALUES (?, ?, ?, ?, ?, ?, ?);";
