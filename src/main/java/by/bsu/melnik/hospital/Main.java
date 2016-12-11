@@ -45,18 +45,18 @@ public class Main {
 
             while (resultSet.next())
             {
-                User user = new User();
-                user.setIduser(resultSet.getInt("iduser"));
-                addedUserID = resultSet.getInt("iduser");
-                user.setUsername(resultSet.getString("username"));
-                user.setPassword(resultSet.getString("password"));
-                user.setName(resultSet.getString("name"));
-                user.setSurname(resultSet.getString("surname"));
-                user.setPatronimyc(resultSet.getString("patronymic"));
-                user.setStatus(resultSet.getInt("status"));
-                user.setDiagnosis(resultSet.getString("diagnosis"));
-
-                System.out.println(user);
+//                User user = new User();
+//                user.setIduser(resultSet.getInt("iduser"));
+//                addedUserID = resultSet.getInt("iduser");
+//                user.setUsername(resultSet.getString("username"));
+//                user.setPassword(resultSet.getString("password"));
+//                user.setName(resultSet.getString("name"));
+//                user.setSurname(resultSet.getString("surname"));
+//                user.setPatronymic(resultSet.getString("patronymic"));
+//                user.setStatus("Не определён.");
+//                user.setDiagnosis(resultSet.getString("diagnosis"));
+//
+//                System.out.println(user);
             }
 
             //Удаление пользователя

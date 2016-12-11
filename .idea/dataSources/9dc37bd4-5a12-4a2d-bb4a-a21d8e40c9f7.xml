@@ -13,40 +13,41 @@
     <table id="7" parent="2" name="drug"/>
     <table id="8" parent="2" name="operation"/>
     <table id="9" parent="2" name="procedure"/>
-    <table id="10" parent="2" name="user"/>
-    <column id="11" parent="7" name="iddrug">
+    <table id="10" parent="2" name="status"/>
+    <table id="11" parent="2" name="user"/>
+    <column id="12" parent="7" name="iddrug">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="12" parent="7" name="drugName">
+    <column id="13" parent="7" name="drugName">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="7" name="drugDesc">
+    <column id="14" parent="7" name="drugDesc">
       <Position>3</Position>
       <DataType>longtext|0</DataType>
     </column>
-    <column id="14" parent="7" name="drugDosing">
+    <column id="15" parent="7" name="drugDosing">
       <Position>4</Position>
       <DataType>longtext|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="7" name="user_iduser">
+    <column id="16" parent="7" name="user_iduser">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="16" parent="7" name="fk_drug_user1_idx">
+    <index id="17" parent="7" name="fk_drug_user1_idx">
       <ColNames>user_iduser</ColNames>
     </index>
-    <key id="17" parent="7" name="PRIMARY">
+    <key id="18" parent="7" name="PRIMARY">
       <ColNames>iddrug</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="18" parent="7" name="fk_drug_user1">
+    <foreign-key id="19" parent="7" name="fk_drug_user1">
       <ColNames>user_iduser</ColNames>
       <RefSchemaName>hospital</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -54,39 +55,39 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="19" parent="8" name="idoperation">
+    <column id="20" parent="8" name="idoperation">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="20" parent="8" name="operationName">
+    <column id="21" parent="8" name="operationName">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="21" parent="8" name="operationDesc">
+    <column id="22" parent="8" name="operationDesc">
       <Position>3</Position>
       <DataType>longtext|0</DataType>
     </column>
-    <column id="22" parent="8" name="operationDate">
+    <column id="23" parent="8" name="operationDate">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="8" name="user_iduser">
+    <column id="24" parent="8" name="user_iduser">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="24" parent="8" name="fk_operation_user1_idx">
+    <index id="25" parent="8" name="fk_operation_user1_idx">
       <ColNames>user_iduser</ColNames>
     </index>
-    <key id="25" parent="8" name="PRIMARY">
+    <key id="26" parent="8" name="PRIMARY">
       <ColNames>idoperation</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="26" parent="8" name="fk_operation_user1">
+    <foreign-key id="27" parent="8" name="fk_operation_user1">
       <ColNames>user_iduser</ColNames>
       <RefSchemaName>hospital</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -94,48 +95,48 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="27" parent="9" name="idprocedure">
+    <column id="28" parent="9" name="idprocedure">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="28" parent="9" name="procedureName">
+    <column id="29" parent="9" name="procedureName">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="9" name="procedureDesc">
+    <column id="30" parent="9" name="procedureDesc">
       <Position>3</Position>
       <DataType>longtext|0</DataType>
     </column>
-    <column id="30" parent="9" name="procedureDuration">
+    <column id="31" parent="9" name="procedureDuration">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="31" parent="9" name="procedureStartDate">
+    <column id="32" parent="9" name="procedureStartDate">
       <Position>5</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="32" parent="9" name="procedureHowManyTimes">
+    <column id="33" parent="9" name="procedureHowManyTimes">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="33" parent="9" name="user_iduser">
+    <column id="34" parent="9" name="user_iduser">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="34" parent="9" name="fk_procedure_user_idx">
+    <index id="35" parent="9" name="fk_procedure_user_idx">
       <ColNames>user_iduser</ColNames>
     </index>
-    <key id="35" parent="9" name="PRIMARY">
+    <key id="36" parent="9" name="PRIMARY">
       <ColNames>idprocedure</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="36" parent="9" name="fk_procedure_user">
+    <foreign-key id="37" parent="9" name="fk_procedure_user">
       <ColNames>user_iduser</ColNames>
       <RefSchemaName>hospital</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -143,47 +144,88 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="37" parent="10" name="iduser">
+    <column id="38" parent="10" name="idstatus">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="10" name="statusName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="10" name="idstatus_UNIQUE">
+      <ColNames>idstatus</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="10" name="statusName_UNIQUE">
+      <ColNames>statusName</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="42" parent="10" name="PRIMARY">
+      <ColNames>idstatus</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="43" parent="10" name="idstatus_UNIQUE">
+      <ColNames>idstatus</ColNames>
+      <UnderlyingIndexName>idstatus_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="44" parent="10" name="statusName_UNIQUE">
+      <ColNames>statusName</ColNames>
+      <UnderlyingIndexName>statusName_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="11" name="iduser">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="38" parent="10" name="username">
+    <column id="46" parent="11" name="username">
       <Position>2</Position>
       <DataType>varchar(16)|0</DataType>
     </column>
-    <column id="39" parent="10" name="password">
+    <column id="47" parent="11" name="password">
       <Position>3</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="40" parent="10" name="name">
+    <column id="48" parent="11" name="name">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="10" name="surname">
+    <column id="49" parent="11" name="surname">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="42" parent="10" name="patronymic">
+    <column id="50" parent="11" name="patronymic">
       <Position>6</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="43" parent="10" name="status">
+    <column id="51" parent="11" name="diagnosis">
       <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="52" parent="11" name="status_idstatus">
+      <Position>8</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <column id="44" parent="10" name="diagnosis">
-      <Position>8</Position>
-      <DataType>varchar(45)|0</DataType>
-    </column>
-    <key id="45" parent="10" name="PRIMARY">
+    <index id="53" parent="11" name="fk_user_status1_idx">
+      <ColNames>status_idstatus</ColNames>
+    </index>
+    <key id="54" parent="11" name="PRIMARY">
       <ColNames>iduser</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="55" parent="11" name="fk_user_status1">
+      <ColNames>status_idstatus</ColNames>
+      <RefSchemaName>hospital</RefSchemaName>
+      <RefTableName>status</RefTableName>
+      <RefColNames>idstatus</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
   </database-model>
 </dataSource>
