@@ -1,46 +1,75 @@
 package by.bsu.melnik.hospital;
 
+import by.bsu.melnik.hospital.model.User;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-/**
- * Created by ilyah on 10.12.2016.
- */
+
 public class Main {
 
-
-    private static final String URL = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-
+    private static final String INSERT_NEW_USER = "INSERT INTO `hospital`.`user` (`username`, `password`, `name`, `surname`, `patronymic`, `status`, `diagnosis`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    private static final String DELETE_USER = "DELETE FROM `hospital`.`user` WHERE `iduser`= ? ;";
     public static void main (String[] args) {
 
-        try {
 
+        String query = "SELECT * FROM USER";
+
+        PreparedStatement preparedStatement = null;
+
+
+        try {
+            DBWorker worker = new DBWorker();
+
+            int addedUserID = 100;
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
 
-        } catch (SQLException e) {
+            // Добавление пользователя
+            preparedStatement = worker.getConnection().prepareStatement(INSERT_NEW_USER);
 
-            System.err.println("Не удалось загрузить класс драйвера!");
-        }
+            preparedStatement.setString(1,"testuser");
+            preparedStatement.setString(2,"testuser");
+            preparedStatement.setString(3,"Имя");
+            preparedStatement.setString(4,"Фамилия");
+            preparedStatement.setString(5,"Отчество");
+            preparedStatement.setInt(6,1);
+            preparedStatement.setString(7,"Диагноз");
 
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             Statement statement = connection.createStatement();
-        ){
-            if (!connection.isClosed()){
+            preparedStatement.execute();
+            System.out.println("Пользователь успешно добавлен!");
 
-                System.out.println("Соединение с БД установлено!");
+            // Получаем всех пользователей
+            Statement statement = worker.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next())
+            {
+//                User user = new User();
+//                user.setIduser(resultSet.getInt("iduser"));
+//                addedUserID = resultSet.getInt("iduser");
+//                user.setUsername(resultSet.getString("username"));
+//                user.setPassword(resultSet.getString("password"));
+//                user.setName(resultSet.getString("name"));
+//                user.setSurname(resultSet.getString("surname"));
+//                user.setPatronymic(resultSet.getString("patronymic"));
+//                user.setStatus("Не определён.");
+//                user.setDiagnosis(resultSet.getString("diagnosis"));
+//
+//                System.out.println(user);
             }
 
-            //statement.execute("INSERT INTO `hospital`.`drug` (`drugName`, `drugDesc`, `drugDosing`, `user_iduser`) VALUES ('ЛИНЕКС ', 'пор внутр 1.5г N10 (Лек, Словения)', 'По 1 пак. 1 раз в день', '3');");
-            ResultSet res = statement.executeQuery("SELECT * FROM hospital.drug");
-            connection.close();
-            if (connection.isClosed()){
+            //Удаление пользователя
+            preparedStatement = worker.getConnection().prepareStatement(DELETE_USER);
+            preparedStatement.setInt(1,addedUserID);
+            preparedStatement.executeUpdate();
+            System.out.println("Пользователь с ID " + addedUserID + " успешно удален!");
 
-                System.out.println("Соединение с БД закрыто!");
-            }
+            worker.getConnection().close();
+
+
+            // TODO: ЗАКРЫТИЕ БД ДОЛЖНО БЫТЬ В FINALLY!!!
+
 
         } catch (SQLException e) {
             e.printStackTrace();
