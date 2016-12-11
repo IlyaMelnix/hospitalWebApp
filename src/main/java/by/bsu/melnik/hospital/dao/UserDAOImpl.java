@@ -11,30 +11,16 @@ import java.util.List;
  */
 public class UserDAOImpl implements UserDAO {
 
+    private ConnectionPool pool = ConnectionPool.getInstance();
 
-    private static final String URL = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-
-    static {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-        }
-    }
-
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-    }
-
-    private  void closeConnection(Connection connection){
-        if (connection == null)
-            return;
-        try {
-            connection.close();
-        } catch (SQLException e) {
-        }
-    }
+//    private void closeConnection(Connection connection){
+//        if (connection == null)
+//            return;
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//        }
+//    }
 
     // TODO: Дописать метод получения всех пользователей.
     public List<User> findAllUsers(){
@@ -47,7 +33,8 @@ public class UserDAOImpl implements UserDAO {
         try {
 
 
-            connection = getConnection();
+            connection = pool.getConnection();
+
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -77,6 +64,8 @@ public class UserDAOImpl implements UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
         }
 
         return result;
