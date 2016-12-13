@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hello servlet</title>
+    <title>Hello!</title>
 </head>
 <body>
-    <h1>Hello servlets!</h1>
+    <jsp:forward page="WEB-INF/jsp/login.jsp"/>
 </body>
 </html>

@@ -115,7 +115,6 @@ public class User {
         this.userProceduresList = userProceduresList;
     }
 
-
     @Override
     public String toString() {
         return "User{" +

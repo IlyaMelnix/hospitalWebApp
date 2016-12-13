@@ -32,7 +32,6 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = null;
         try {
 
-
             connection = pool.getConnection();
 
             PreparedStatement statement = connection.prepareStatement(sql);
