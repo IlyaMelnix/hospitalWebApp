@@ -14,6 +14,7 @@ public interface UserDAO {
     public List<User> findAllUsers();
     public List<User> searchUserByKeyword(String keyword);
     public List<User> findAllByStatus(int status);
+    public User searchUserByUsernameAndPassword(String username, String password);
 
     public void insert (User user);
     public void update (User user);

@@ -3,6 +3,7 @@ package by.bsu.melnik.hospital.command;
 import by.bsu.melnik.hospital.ConfigurationManager;
 import by.bsu.melnik.hospital.MessageManager;
 import by.bsu.melnik.hospital.logic.LoginLogic;
+import by.bsu.melnik.hospital.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 public class LoginCommand implements ActionCommand {
@@ -22,17 +23,19 @@ public class LoginCommand implements ActionCommand {
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
 
+        // Попытка создания текущего пользователя
+        User CurrentUser = LoginLogic.checkLogin(login,password);
         // Проверка логина и пароля
-        if (LoginLogic.checkLogin(login,password)){
+        if (CurrentUser!=null){
 
             request.setAttribute("user",login);
+            request.getSession().setAttribute("currentUser",CurrentUser);
             // Определение пути к main.jsp
             //page = "/WEB-INF/jsp/main.jsp";
             page = ConfigurationManager.getProperty("path.page.main");
 
         } else {
 
-            //request.setAttribute("errorLoginOrPassMessage", "Ну ты блять и пиздец сука.");
             request.setAttribute("errorLoginOrPassMessage", MessageManager.getProperty("message.loginerror"));
 
             //page = "/WEB-INF/jsp/error.jsp";

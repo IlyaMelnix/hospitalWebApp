@@ -30,6 +30,7 @@ public class ConnectionPool {
                 this.queue.put(connection);
             }
         } catch (ClassNotFoundException | InterruptedException | SQLException e) {
+            System.out.println("/n/n/n=============================================================== /n ERROR /n/n=============================================================== ");
             throw new RuntimeException(e);
         }
     }
