@@ -1,8 +1,8 @@
 package by.bsu.melnik.hospital.command;
 
+import by.bsu.melnik.hospital.ConfigurationManager;
+import by.bsu.melnik.hospital.MessageManager;
 import by.bsu.melnik.hospital.logic.LoginLogic;
-import by.bsu.melnik.hospital.resource.ConfigurationManager;
-import by.bsu.melnik.hospital.resource.MessageManager;
 
 import javax.servlet.http.HttpServletRequest;
 public class LoginCommand implements ActionCommand {
@@ -27,12 +27,15 @@ public class LoginCommand implements ActionCommand {
 
             request.setAttribute("user",login);
             // Определение пути к main.jsp
+            //page = "/WEB-INF/jsp/main.jsp";
             page = ConfigurationManager.getProperty("path.page.main");
 
         } else {
 
-            request.setAttribute("errorLoginOrPassMessage",
-                    MessageManager.getProperty("message.loginerror"));
+            //request.setAttribute("errorLoginOrPassMessage", "Ну ты блять и пиздец сука.");
+            request.setAttribute("errorLoginOrPassMessage", MessageManager.getProperty("message.loginerror"));
+
+            //page = "/WEB-INF/jsp/error.jsp";
             page = ConfigurationManager.getProperty("path.page.login");
         }
         return page;

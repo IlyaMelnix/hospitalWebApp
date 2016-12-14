@@ -1,6 +1,6 @@
 package by.bsu.melnik.hospital.command;
 
-import by.bsu.melnik.hospital.resource.ConfigurationManager;
+import by.bsu.melnik.hospital.ConfigurationManager;
 import javax.servlet.http.HttpServletRequest;
 
 public class EmptyCommand implements ActionCommand{

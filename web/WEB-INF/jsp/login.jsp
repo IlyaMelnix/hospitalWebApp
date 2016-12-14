@@ -11,11 +11,11 @@
             <br/>Password:<br/>
             <input type="password" name= "password" value=""/>
                 <br/>
-            ${errorloginPassMessage}
+            ${errorLoginOrPassMessage}
                 <br/>
             ${wrongAction}
                 <br/>
-            ${nul1Page}
+            ${nullPage}
                 <br/>
             <input type= "submit" value="Log in"/>
         </form>

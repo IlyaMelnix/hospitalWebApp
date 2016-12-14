@@ -1,10 +1,10 @@
-package by.bsu.melnik.hospital.resource;
+package by.bsu.melnik.hospital;
 
 import java.util.ResourceBundle;
 
 public class ConfigurationManager {
     private static final ResourceBundle resourseBundle =
-            ResourceBundle.getBundle("resources.config");
+            ResourceBundle.getBundle("config");
 
     // Класс извлекает информацию из файла config.properties
 

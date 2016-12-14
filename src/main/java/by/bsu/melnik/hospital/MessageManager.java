@@ -1,10 +1,10 @@
-package by.bsu.melnik.hospital.resource;
+package by.bsu.melnik.hospital;
 
 import java.util.ResourceBundle;
 
 public class MessageManager {
     private final static ResourceBundle resourseBundle =
-            ResourceBundle.getBundle("resources.messages");
+            ResourceBundle.getBundle("messages");
 
     // класс извлекает информацию из файла messages.properties
     private MessageManager(){}
