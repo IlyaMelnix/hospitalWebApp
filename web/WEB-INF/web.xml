@@ -29,5 +29,23 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <jsp-file>/WEB-INF/jsp/admin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>create-new-user</servlet-name>
+        <jsp-file>/WEB-INF/jsp/create-new-user.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>create-new-user</servlet-name>
+        <url-pattern>/create-new-user</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

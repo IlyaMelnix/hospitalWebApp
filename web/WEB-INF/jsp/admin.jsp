@@ -13,6 +13,8 @@
 <body>
     <h1>Панель администратора</h1>
     <h2>${user}, добрый день!</h2>
-    <a href="controller?command=Logout">Logout</a>
+    <a href="controller?command=Logout">Выйти из системы</a>
+    <br/>
+    <a href="/create-new-user">Зарегистрировать нового пользователя</a>
 </body>
 </html>

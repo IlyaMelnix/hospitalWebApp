@@ -1,6 +1,5 @@
 package by.bsu.melnik.hospital;
 
-import by.bsu.melnik.hospital.model.User;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
@@ -8,7 +7,7 @@ import java.sql.*;
 
 public class Main {
 
-    private static final String INSERT_NEW_USER = "INSERT INTO `hospital`.`user` (`username`, `password`, `name`, `surname`, `patronymic`, `status`, `diagnosis`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_NEW_USER = "INSERT INTO `hospital`.`user` (`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String DELETE_USER = "DELETE FROM `hospital`.`user` WHERE `iduser`= ? ;";
     public static void main (String[] args) {
 

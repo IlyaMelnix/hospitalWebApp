@@ -2,10 +2,7 @@ package by.bsu.melnik.hospital.dao;
 
 import by.bsu.melnik.hospital.model.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +15,10 @@ public class MySQLUserDAO implements UserDAO {
             "INNER JOIN `hospital`.`status` ON `hospital`.`user`.`status_idstatus` = `hospital`.`status`.`idstatus` " +
             "WHERE `hospital`.`user`.`username` = ? AND `hospital`.`user`.`password` = ? ;";
 
+    private static final String INSERT_NEW_USER = "INSERT INTO `hospital`.`user` " +
+            "(`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?);";
+
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     @Override
@@ -26,7 +27,7 @@ public class MySQLUserDAO implements UserDAO {
         // Создание нового пользователя
         User user = null;
 
-        // Подготовка ссылок на объекты
+        // Создание объектов
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -78,7 +79,53 @@ public class MySQLUserDAO implements UserDAO {
 
         } catch (SQLException | DAOException e) {
             e.printStackTrace();
+        } finally {
+
+            // Запрос на получение соединения
+            pool.releaseConnection(connection);
         }
+        return user;
+    }
+
+    @Override
+    public User createNewUser(String username, String password, String name, String surname, String patronymic, String diagnosis, int status) {
+
+        // Создание нового пользователя
+        User user = null;
+
+        // Создание объектов
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        // Добавление пользователя
+        try {
+
+            // Запрос на получение соединения
+            connection = pool.getConnection();
+
+            // Создание запроса на insert
+            preparedStatement = connection.prepareStatement(INSERT_NEW_USER);
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
+            preparedStatement.setString(3,name);
+            preparedStatement.setString(4,surname);
+            preparedStatement.setString(5,patronymic);
+            preparedStatement.setString(6,diagnosis);
+            preparedStatement.setInt(7,status);
+
+            // Выполнение запроса
+            preparedStatement.execute();
+            System.out.println("Пользователь успешно добавлен!");
+
+            // Проверка и инициализация user
+            user = searchUserByUsernameAndPassword(username, password);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Закрытие соединения
+            pool.releaseConnection(connection);
+        }
+
         return user;
     }
 
@@ -134,18 +181,16 @@ public class MySQLUserDAO implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
+            // Закрытие соединения
             pool.releaseConnection(connection);
         }
 
         return result;
     }
 
-
-
     public List<User> searchUserByKeyword(String keyword) {
         return null;
     }
-
 
     public List<User> findAllByStatus(int status) {
         return null;

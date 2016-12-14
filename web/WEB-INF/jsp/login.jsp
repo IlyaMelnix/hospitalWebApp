@@ -17,7 +17,7 @@
                 <br/>
             ${nullPage}
                 <br/>
-            <input type= "submit" value="Log in"/>
+            <input type= "submit" value="Log in" class="waves-effect waves-light btn indigo darken-4"/>
         </form>
         <hr/>
     </body>

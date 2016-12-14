@@ -15,6 +15,6 @@
     <hr/>
         ${user}, hello!
     <hr/>
-    <a href="controller?command=Logout">Logout</a>
+    <a href="controller?command=Logout">Выйти из системы</a>
 </body>
 </html>
