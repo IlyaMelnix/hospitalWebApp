@@ -57,6 +57,7 @@ public class MySQLUserDAO implements UserDAO {
             // Если пользователь найден - сохраним его в user
             user = new User();
             user.setIduser(resultSet.getInt("iduser"));
+            user.setIdstatus(resultSet.getInt("idstatus"));
             user.setStatus(resultSet.getString("statusName"));
             user.setUsername(resultSet.getString("username"));
             user.setPassword(resultSet.getString("password"));

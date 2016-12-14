@@ -32,7 +32,10 @@ public class LoginCommand implements ActionCommand {
             request.getSession().setAttribute("currentUser",CurrentUser);
             // Определение пути к main.jsp
             //page = "/WEB-INF/jsp/main.jsp";
-            page = ConfigurationManager.getProperty("path.page.main");
+            if (CurrentUser.getIdstatus() < 2)
+                page = ConfigurationManager.getProperty("path.page.main");
+            else
+                page = ConfigurationManager.getProperty("path.page.admin");
 
         } else {
 

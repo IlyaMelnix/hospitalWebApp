@@ -8,6 +8,7 @@ public class User {
 
     // FIELDS
     private int iduser;
+    private int idstatus;
     private String status;
     private String username;
     private String password;
@@ -19,12 +20,12 @@ public class User {
     private List<Operation> userOperationList;
     private List<Procedure> userProceduresList;
 
-
     // CONSTRUCTORS
     public User() {
     }
-    public User(int iduser, String status, String username, String password, String name, String surname, String patronymic, String diagnosis, List<Drug> userDrugsList, List<Operation> userOperationList, List<Procedure> userProceduresList) {
+    public User(int iduser, int idstatus, String status, String username, String password, String name, String surname, String patronymic, String diagnosis, List<Drug> userDrugsList, List<Operation> userOperationList, List<Procedure> userProceduresList) {
         this.iduser = iduser;
+        this.idstatus = idstatus;
         this.status = status;
         this.username = username;
         this.password = password;
@@ -43,6 +44,13 @@ public class User {
     }
     public void setIduser(int iduser) {
         this.iduser = iduser;
+    }
+
+    public int getIdstatus() {
+        return idstatus;
+    }
+    public void setIdstatus(int idstatus) {
+        this.idstatus = idstatus;
     }
 
     public String getStatus() {
@@ -119,6 +127,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "iduser=" + iduser +
+                ", idstatus=" + idstatus + '\'' +
                 ", status='" + status + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -131,4 +140,5 @@ public class User {
                 ", userProceduresList=" + userProceduresList +
                 '}';
     }
+
 }
