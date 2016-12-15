@@ -66,11 +66,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>materialize</artifactId>
-            <version>0.97.7</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
-
 
     </dependencies>
 </project>

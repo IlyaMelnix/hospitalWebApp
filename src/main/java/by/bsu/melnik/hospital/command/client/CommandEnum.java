@@ -4,6 +4,7 @@ import by.bsu.melnik.hospital.command.ActionCommand;
 import by.bsu.melnik.hospital.command.CreateNewUserCommand;
 import by.bsu.melnik.hospital.command.LoginCommand;
 import by.bsu.melnik.hospital.command.LogoutCommand;
+import by.bsu.melnik.hospital.command.DeleteUserCommand;
 
 public enum CommandEnum {
     LOGIN {
@@ -19,6 +20,11 @@ public enum CommandEnum {
     CREATENEWUSER {
         {
             this.command = new CreateNewUserCommand();
+        }
+    },
+    DELETEUSER {
+        {
+            this.command = new DeleteUserCommand();
         }
     };
 

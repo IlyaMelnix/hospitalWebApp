@@ -48,7 +48,11 @@ public class CreateNewUserCommand implements ActionCommand {
         if (NewUser != null){
 
             request.setAttribute("newUser", NewUser);
-            page = ConfigurationManager.getProperty("path.page.success");
+            request.setAttribute("usersListMessage", MessageManager.getProperty("message.usercreated"));
+
+            // Обновление списка пользователей
+            request.getSession().setAttribute("users", userDAO.findAllUsers());
+            page = ConfigurationManager.getProperty("path.page.admin");
 
         } else {
 

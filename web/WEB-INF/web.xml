@@ -21,6 +21,24 @@
     </error-page>
 
     <servlet>
+        <servlet-name>header</servlet-name>
+        <jsp-file>/WEB-INF/jsp/header.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>header</servlet-name>
+        <url-pattern>/header</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>footer</servlet-name>
+        <jsp-file>/WEB-INF/jsp/footer.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>footer</servlet-name>
+        <url-pattern>/footer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>login</servlet-name>
         <jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
     </servlet>

@@ -2,17 +2,18 @@ package by.bsu.melnik.hospital.command;
 
 import by.bsu.melnik.hospital.ConfigurationManager;
 import by.bsu.melnik.hospital.MessageManager;
-import by.bsu.melnik.hospital.logic.LoginLogic;
+import by.bsu.melnik.hospital.dao.MySQLUserDAO;
+import by.bsu.melnik.hospital.dao.UserDAO;
 import by.bsu.melnik.hospital.model.User;
 
 import javax.servlet.http.HttpServletRequest;
+
 public class LoginCommand implements ActionCommand {
-//    private static final String ID = "id";
-//    private static final String FIO = "fio";
+
+    private static UserDAO userDAO = new MySQLUserDAO();
+
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
-//    private static final String IS_ADMIN = "isAdmin";
-//    private static final String IS_SIGNED = "isSignedIn";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -24,19 +25,20 @@ public class LoginCommand implements ActionCommand {
         String password = request.getParameter(PASSWORD);
 
         // Попытка создания текущего пользователя
-        User CurrentUser = LoginLogic.checkLogin(login,password);
+        User CurrentUser = userDAO.searchUserByUsernameAndPassword(login,password);
         // Проверка логина и пароля
         if (CurrentUser!=null){
 
             request.setAttribute("user",login);
             request.getSession().setAttribute("currentUser",CurrentUser);
-            // Определение пути к main.jsp
-            //page = "/WEB-INF/jsp/main.jsp";
+
+            // Определение пути
             if (CurrentUser.getIdstatus() < 2)
                 page = ConfigurationManager.getProperty("path.page.main");
-            else
+            else {
+                request.getSession().setAttribute("users", userDAO.findAllUsers());
                 page = ConfigurationManager.getProperty("path.page.admin");
-
+            }
         } else {
 
             request.setAttribute("errorLoginOrPassMessage", MessageManager.getProperty("message.loginerror"));

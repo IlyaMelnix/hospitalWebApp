@@ -19,7 +19,31 @@ public class MySQLUserDAO implements UserDAO {
             "(`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
+    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus";
+    private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
     private ConnectionPool pool = ConnectionPool.getInstance();
+
+    private User extractUser(ResultSet resultSet) throws SQLException {
+
+        User user = new User();
+        user.setIduser(resultSet.getInt("iduser"));
+        user.setIdstatus(resultSet.getInt("idstatus"));
+        user.setStatus(resultSet.getString("statusName"));
+        user.setUsername(resultSet.getString("username"));
+        user.setPassword(resultSet.getString("password"));
+        user.setName(resultSet.getString("name"));
+        user.setSurname(resultSet.getString("surname"));
+        user.setPatronymic(resultSet.getString("patronymic"));
+        user.setDiagnosis(resultSet.getString("diagnosis"));
+
+        // Создаём новые списки болезней, операций и процедур для этого пользователя.
+        // TODO: Создаём новые списки болезней, операций и процедур для этого пользователя.
+        // TODO: Создать дао для каждой таблицы
+        user.setUserDrugsList(null);
+        user.setUserOperationList(null);
+        user.setUserProceduresList(null);
+        return user;
+    }
 
     @Override
     public User searchUserByUsernameAndPassword(String username, String password) {
@@ -56,26 +80,10 @@ public class MySQLUserDAO implements UserDAO {
             }
 
             // Если пользователь найден - сохраним его в user
-            user = new User();
-            user.setIduser(resultSet.getInt("iduser"));
-            user.setIdstatus(resultSet.getInt("idstatus"));
-            user.setStatus(resultSet.getString("statusName"));
-            user.setUsername(resultSet.getString("username"));
-            user.setPassword(resultSet.getString("password"));
-            user.setName(resultSet.getString("name"));
-            user.setSurname(resultSet.getString("surname"));
-            user.setPatronymic(resultSet.getString("patronymic"));
-            user.setDiagnosis(resultSet.getString("diagnosis"));
-
-            // Создаём новые списки болезней, операций и процедур для этого пользователя.
-            // TODO: Создаём новые списки болезней, операций и процедур для этого пользователя.
-            // TODO: Создать дао для каждой таблицы
-            user.setUserDrugsList(null);
-            user.setUserOperationList(null);
-            user.setUserProceduresList(null);
+            user = extractUser(resultSet);
 
             // Возвращаем созданного пользователя
-            return user;
+            //return user;
 
         } catch (SQLException | DAOException e) {
             e.printStackTrace();
@@ -84,6 +92,8 @@ public class MySQLUserDAO implements UserDAO {
             // Запрос на получение соединения
             pool.releaseConnection(connection);
         }
+
+        // Возвращаем созданного пользователя
         return user;
     }
 
@@ -141,41 +151,21 @@ public class MySQLUserDAO implements UserDAO {
     // TODO: Дописать метод получения всех пользователей.
     public List<User> findAllUsers(){
 
-        List<User> result = new ArrayList<>();
-
-        String sql = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus";
-
+        List<User> users = new ArrayList<>();
         Connection connection = null;
 
         try {
 
             connection = pool.getConnection();
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement statement = connection.prepareStatement(FIND_ADD_USERS);
+            ResultSet resultSet = statement.executeQuery(FIND_ADD_USERS);
 
             while(resultSet.next()){
 
-                // Получить все, что можно, из юзера
-                // Создать новые запросы в таблицы Drug, Operation, Procedure на записи с таким же id
-                // Если находит - создаём новый объект, добавляем его в список через get..List.add
-                // Позакрывать все prepareStatement
-
-                // В книжке: Learn Java for Web - страница 30
-
-                User user = new User();
-                user.setIduser(resultSet.getInt("iduser"));
-                user.setUsername(resultSet.getString("username"));
-                user.setPassword(resultSet.getString("password"));
-                user.setName(resultSet.getString("name"));
-                user.setSurname(resultSet.getString("surname"));
-                user.setPatronymic(resultSet.getString("patronymic"));
-
-                //TODO: Сделать нормальное получение статуса
-                user.setStatus("Не определён.");
-                user.setDiagnosis(resultSet.getString("diagnosis"));
-
-                System.out.println(user);
+                User user = extractUser(resultSet);
+                users.add(user);
+                System.out.println("Добавлен пользователь в users! " + user);
             }
 
         } catch (SQLException e) {
@@ -185,7 +175,7 @@ public class MySQLUserDAO implements UserDAO {
             pool.releaseConnection(connection);
         }
 
-        return result;
+        return users;
     }
 
     public List<User> searchUserByKeyword(String keyword) {
@@ -208,6 +198,20 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     public void delete(int iduser) {
+
+        Connection connection = null;
+        try {
+
+            connection = pool.getConnection();
+            PreparedStatement st = connection.prepareStatement(DELETE_USER_BY_ID);
+            st.setInt(1, iduser);
+            int count = st.executeUpdate();
+
+            // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

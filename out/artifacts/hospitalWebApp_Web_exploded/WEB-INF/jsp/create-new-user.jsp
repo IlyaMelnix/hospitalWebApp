@@ -1,14 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ilyah
-  Date: 15.12.2016
-  Time: 0:04
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%-- Загрузка html, head, и начала body --%>
+<%--<jsp:include page="header.jsp"/>--%>
 <html>
 <head>
-    <title>Регистрация нового пользователя</title>
+
+    <title>Система "Больница"</title>
 </head>
 <body>
     <h1>Регистрация нового пользователя</h1>
@@ -40,6 +38,20 @@
             <option value="2">Медсестра</option>
             <option value="3">Врач</option>
         </select>
+
+        <%--<div class="input-field col s12">--%>
+            <%--<select size="5" name="status">--%>
+                <%--<optgroup label="Пациенты">--%>
+                    <%--<option value="0">Выписанный пациент</option>--%>
+                    <%--<option value="1">Пациент</option>--%>
+                <%--</optgroup>--%>
+                <%--<optgroup label="Врачи">--%>
+                    <%--<option value="2">Медсестра</option>--%>
+                    <%--<option value="3">Врач</option>--%>
+                <%--</optgroup>--%>
+            <%--</select>--%>
+            <%--<label>Выберите статус из списка...</label>--%>
+        <%--</div>--%>
         ${errorUserIsNotCreated}
         <br/>
         ${wrongAction}
@@ -48,5 +60,10 @@
         <br/>
         <input type="submit" value="Зарегистрировать пользователя"/>
     </form>
+
+<%-- Загрузка конца body, импорт js, html --%>
+<%--<jsp:include page="footer.jsp"/>--%>
+
+
 </body>
 </html>
