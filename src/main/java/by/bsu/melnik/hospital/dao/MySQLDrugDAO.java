@@ -19,7 +19,7 @@ public class MySQLDrugDAO implements DrugDAO {
         Drug drug = new Drug();
 
         drug.setIddrug(resultSet.getInt("iddrug"));
-        drug.setIduser(resultSet.getInt("iduser"));
+        drug.setIduser(resultSet.getInt("user_iduser"));
         drug.setDrugName(resultSet.getString("drugName"));
         drug.setDrugDesc(resultSet.getString("drugDesc"));
         drug.setDrugDosing(resultSet.getString("drugDosing"));

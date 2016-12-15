@@ -23,6 +23,8 @@ public class MySQLUserDAO implements UserDAO {
     private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
     private ConnectionPool pool = ConnectionPool.getInstance();
 
+    private static DrugDAO drugDAO = new MySQLDrugDAO();
+
     private User extractUser(ResultSet resultSet) throws SQLException {
 
         User user = new User();
@@ -39,7 +41,7 @@ public class MySQLUserDAO implements UserDAO {
         // Создаём новые списки болезней, операций и процедур для этого пользователя.
         // TODO: Создаём новые списки болезней, операций и процедур для этого пользователя.
         // TODO: Создать дао для каждой таблицы
-        user.setUserDrugsList(null);
+        user.setUserDrugsList(drugDAO.FindUserDrugs(user.getIduser()));
         user.setUserOperationList(null);
         user.setUserProceduresList(null);
         return user;

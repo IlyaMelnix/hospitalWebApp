@@ -11,4 +11,4 @@
 
     <title>Система "Больница"</title>
 </head>
-<body>
+<body class="grey lighten-3">
