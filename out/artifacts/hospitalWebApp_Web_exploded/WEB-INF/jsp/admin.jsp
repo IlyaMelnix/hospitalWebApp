@@ -285,8 +285,8 @@
 
                                         <div class="row">
                                             <div class="col s12">
-                                                <input id="procedureStartDate" type="date" class="datepicker" name="procedureStartDate">
                                                 <label for="procedureStartDate">Дата начала</label>
+                                                <input id="procedureStartDate" type="date" class="datepicker" name="procedureStartDate">
                                             </div>
                                         </div>
 
@@ -304,7 +304,6 @@
                                             <i class="material-icons right">add</i>
                                         </button>
 
-                                            <%--<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Выписать лекарство</a>--%>
                                     </div>
                                 </form>
                             </div>
@@ -317,7 +316,26 @@
                                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>
                                                 ${operation.operationName}
                                         </div>
-                                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                                        <div class="collapsible-body">
+
+
+                                            <%--Вывод подробного описания--%>
+                                            <div class="table-output">
+                                                <div class="col l3">
+                                                    <p><strong>ID</strong></p>
+                                                    <p><strong>Название</strong></p>
+                                                    <p><strong>Описание</strong></p>
+                                                    <p><strong>Дата выполнения</strong></p>
+                                                </div>
+                                                <div class="col l9">
+                                                    <p>${operation.idoperation}</p>
+                                                    <p>${operation.operationName}</p>
+                                                    <p>${operation.operationDesc}</p>
+                                                    <p>${operation.operationDate}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -331,14 +349,49 @@
 
                                     <!-- Modal Structure -->
                                     <div id="addOperation${user.iduser}" class="modal">
-                                        <div class="modal-content">
-                                            <h4>Новое лекарство для: ${user.name} ${user.surname} </h4>
-                                            <p>Диагноз: ${user.diagnosis} </p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Назначить процедуру</a>
-                                        </div>
+
+                                        <form name="AddOperationForm" method="POST" action="controller">
+
+                                            <div class="modal-content">
+
+                                                <h4>Новая процедура для: ${user.name} ${user.surname} </h4>
+                                                <h5>Диагноз: ${user.diagnosis} </h5>
+
+                                                <input type="hidden" name="command" value="AddOperation"/>
+                                                <input type="hidden" name="iduser" value="${user.iduser}"/>
+
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <input id="operationName" type="text" class="validate" name="operationName" length="45">
+                                                        <label for="operationName">Название операции</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <textarea id="operationDesc" class="materialize-textarea validate" name="operationDesc"></textarea>
+                                                        <label for="operationDesc">Описание операции</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <label for="operationDate">Дата выполнения</label>
+                                                        <input id="operationDate" type="date" class="datepicker" name="operationDate">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Назначить операцию
+                                                    <i class="material-icons right">add</i>
+                                                </button>
+
+                                            </div>
+                                        </form>
                                     </div>
+
 
                                 </c:when>
                                 <c:otherwise>

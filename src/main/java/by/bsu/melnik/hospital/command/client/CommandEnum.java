@@ -42,6 +42,11 @@ public enum CommandEnum {
         {
             this.command = new DeleteProcedureCommand();
         }
+    },
+    ADDOPERATION{
+        {
+            this.command = new AddOperationCommand();
+        }
     };
 
     ActionCommand command;
