@@ -12,6 +12,8 @@ import java.util.List;
 public class MySQLDrugDAO implements DrugDAO {
 
     private static final String FIND_DRUGS_BY_IDUSER = "SELECT * FROM hospital.drug WHERE hospital.drug.user_iduser = ?;";
+    private static final String ADD_DRUG = "INSERT INTO `hospital`.`drug` (`drugName`, `drugDesc`, `drugDosing`, `user_iduser`) VALUES (?, ?, ?, ?);";
+
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     private Drug extractDrug(ResultSet resultSet) throws SQLException {
@@ -56,6 +58,47 @@ public class MySQLDrugDAO implements DrugDAO {
         }
 
         return userDrugs;
+    }
+
+    @Override
+    public boolean AddDrug(String drugName, String drugDesc, String drugDosing, int iduser) {
+
+        // Создание нового лекарства
+        //Drug drug = null;
+
+        // Создание объектов
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        // Добавление лекарства
+        try {
+
+            // Запрос на получение соединения
+            connection = pool.getConnection();
+
+            // Создание запроса на insert
+            preparedStatement = connection.prepareStatement(ADD_DRUG);
+            preparedStatement.setString(1,drugName);
+            preparedStatement.setString(2,drugDesc);
+            preparedStatement.setString(3,drugDosing);
+            preparedStatement.setInt(4,iduser);
+
+            // Выполнение запроса
+            preparedStatement.execute();
+            System.out.println("Лекарство успешно добавлено!");
+
+            // Проверка и инициализация user
+            //drug =
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // Закрытие соединения
+            pool.releaseConnection(connection);
+        }
+
+        return true;
     }
 
 }

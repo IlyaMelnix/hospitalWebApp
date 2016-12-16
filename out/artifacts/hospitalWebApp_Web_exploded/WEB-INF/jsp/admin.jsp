@@ -89,7 +89,7 @@
                             <div id="deleteUser${user.iduser}" class="modal">
                                 <div class="modal-content">
                                     <h4>Вы уверены, что хотите удалить пользователя ${user.name}?</h4>
-                                    <p>Операция не может быть отменена. Пользователь будет удалён из базы данных.</p>
+                                    <p>Операция не может быть отменена. Пользователь будет удалён из базы данных. Связанные с ним лекарства, процедуры и операции будут удалены.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteUser&id=<c:out value="${user.iduser}"/>">Удалить пользователя</a>
@@ -105,25 +105,80 @@
                                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>
                                                 ${drug.drugName}
                                         </div>
-                                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                                        <div class="collapsible-body">
+
+                                            <%--Вывод подробного описания--%>
+                                            <div class="table-output">
+                                                <div class="col l3">
+                                                    <p><strong>ID</strong></p>
+                                                    <p><strong>Название</strong></p>
+                                                    <p><strong>Описание</strong></p>
+                                                    <p><strong>Способ применения</strong></p>
+                                                </div>
+                                                <div class="col l9">
+                                                    <p>${drug.iddrug}</p>
+                                                    <p>${drug.drugName}</p>
+                                                    <p>${drug.drugDesc}</p>
+                                                    <p>${drug.drugDosing}</p>
+                                                </div>
+                                            </div>
+
+                                            <%--Удаление --%>
+                                            <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>--%>
+                                        </div>
                                     </li>
                                 </c:forEach>
                             </ul>
 
-                            <a class="waves-effect waves-light btn" href="controller?command=addDrug&id=<c:out value="${user.iduser}"/>">Выписать лекарство</a>
-                            <%--<!-- Modal Trigger -->--%>
-                            <%--<a class="waves-effect waves-light btn" href="#addDrug${user.iduser}">Выписать лекарство</a>--%>
+                            <%--<a class="waves-effect waves-light btn" href="controller?command=addDrug&id=<c:out value="${user.iduser}"/>">Выписать лекарство</a>--%>
 
-                            <%--<!-- Modal Structure -->--%>
-                            <%--<div id="addDrug${user.iduser}" class="modal">--%>
-                                <%--<div class="modal-content">--%>
-                                    <%--<h4>Новое лекарство для: ${user.name} ${user.surname} </h4>--%>
-                                    <%--<p>Диагноз: ${user.diagnosis} </p>--%>
-                                <%--</div>--%>
-                                <%--<div class="modal-footer">--%>
-                                    <%--<a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Выписать лекарство</a>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
+                            <!-- Modal Trigger -->
+                            <a class="waves-effect waves-light btn" href="#addDrug${user.iduser}">Выписать лекарство</a>
+
+                            <!-- Modal Structure -->
+                            <div id="addDrug${user.iduser}" class="modal">
+
+                                <form name="AddDrugForm" method="POST" action="controller">
+
+                                    <div class="modal-content">
+                                        <h4>Новое лекарство для: ${user.name} ${user.surname} </h4>
+                                        <h5>Диагноз: ${user.diagnosis} </h5>
+
+                                        <input type="hidden" name="command" value="AddDrug"/>
+                                        <input type="hidden" name="iduser" value="${user.iduser}"/>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="drugname" type="text" class="validate" name="drugname" length="45">
+                                                <label for="drugname">Название лекарства</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <textarea id="drugdesc" class="materialize-textarea validate" name="drugdesc"></textarea>
+                                                <label for="drugdesc">Описание лекарства</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <textarea id="drugdosing" class="materialize-textarea validate" name="drugdosing"></textarea>
+                                                <label for="drugdosing">Способ применения</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Выписать лекарство
+                                            <i class="material-icons right">add</i>
+                                        </button>
+
+                                        <%--<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Выписать лекарство</a>--%>
+                                    </div>
+                                </form>
+                            </div>
 
                             <p><strong>Процедуры</strong></p>
                             <ul class="collapsible" data-collapsible="expandable">

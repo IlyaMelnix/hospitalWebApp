@@ -1,6 +1,7 @@
     package by.bsu.melnik.hospital.command;
 
     import by.bsu.melnik.hospital.ConfigurationManager;
+    import by.bsu.melnik.hospital.MessageManager;
     import by.bsu.melnik.hospital.dao.MySQLUserDAO;
 import by.bsu.melnik.hospital.dao.UserDAO;
 
@@ -23,6 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 
         // Обновление списка пользователей
         request.getSession().setAttribute("users", userDAO.findAllUsers());
+
+        // Сообщение об удалении пользователя
+        request.setAttribute("toastContent", MessageManager.getProperty("message.userdeleted"));
 
         // Перенаправление на страницу админа
         return ConfigurationManager.getProperty("path.page.admin");

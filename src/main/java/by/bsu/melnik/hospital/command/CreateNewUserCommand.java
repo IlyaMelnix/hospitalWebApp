@@ -52,8 +52,8 @@ public class CreateNewUserCommand implements ActionCommand {
         // Проверка создания пользователя
         if (NewUser != null){
 
-            request.setAttribute("newUser", NewUser);
-            request.setAttribute("usersListMessage", MessageManager.getProperty("message.usercreated"));
+            // Сообщение о создании пользователя
+            request.setAttribute("toastContent", MessageManager.getProperty("message.usercreated"));
 
             // Обновление списка пользователей
             request.getSession().setAttribute("users", userDAO.findAllUsers());
@@ -61,7 +61,7 @@ public class CreateNewUserCommand implements ActionCommand {
 
         } else {
 
-            request.setAttribute("errorUserIsNotCreated", MessageManager.getProperty("message.userisnotcreated"));
+            request.setAttribute("toastContent", MessageManager.getProperty("message.userisnotcreated"));
 
         }
         return page;

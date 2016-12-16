@@ -1,6 +1,9 @@
 package by.bsu.melnik.hospital.command;
 
 import by.bsu.melnik.hospital.ConfigurationManager;
+import by.bsu.melnik.hospital.MessageManager;
+import by.bsu.melnik.hospital.dao.DrugDAO;
+import by.bsu.melnik.hospital.dao.MySQLDrugDAO;
 import by.bsu.melnik.hospital.dao.MySQLUserDAO;
 import by.bsu.melnik.hospital.dao.UserDAO;
 
@@ -8,28 +11,45 @@ import javax.servlet.http.HttpServletRequest;
 
 public class AddDrugCommand implements ActionCommand{
 
-    private static final String DRUGNAME = "drugname";
-    private static final String DRUGDESC = "drugdesc";
-    private static final String DRUGDOSING = "drugdosing";
-    private static final String IDUSER = "iduser";
+    private static final String DRUG_NAME = "drugname";
+    private static final String DRUG_DESC = "drugdesc";
+    private static final String DRUG_DOSING = "drugdosing";
+    private static final String ID_USER = "iduser";
 
+    private static DrugDAO drugDAO = new MySQLDrugDAO();
     private static UserDAO userDAO = new MySQLUserDAO();
-
-    private static final String ID = "id";
 
     @Override
     public String execute(HttpServletRequest request) {
 
-        // Извлечение ID из запроса
-        int id = Integer.parseInt(request.getParameter(ID));
+        String page = ConfigurationManager.getProperty("path.page.admin");
+        // Извлечение из запроса параметров для добавления
+        String drugname     = request.getParameter(DRUG_NAME);
+        String drugdesc     = request.getParameter(DRUG_DESC);
+        String drugdosing   = request.getParameter(DRUG_DOSING);
 
-        // Попытка удаления пользователя
-        userDAO.delete(id);
+        if (request.getParameter(ID_USER) == null ||
+                drugname == null || drugname.equals("") ||
+                drugdesc == null || drugdesc.equals("") ||
+                drugdosing == null || drugdosing.equals("")) {
+            request.setAttribute("toastContent", MessageManager.getProperty("message.drugnotadded"));
+            return page;
+        }
 
-        // Обновление списка пользователей
-        request.getSession().setAttribute("users", userDAO.findAllUsers());
+        int iduser = Integer.parseInt(request.getParameter(ID_USER));
+
+        // Попытка добавления лекарства
+        if (drugDAO.AddDrug(drugname, drugdesc, drugdosing, iduser)){
+            request.setAttribute("toastContent", MessageManager.getProperty("message.drugadded"));
+            // Обновление списка пользователей
+            request.getSession().setAttribute("users", userDAO.findAllUsers());
+
+        }
+        else{
+            request.setAttribute("toastContent", MessageManager.getProperty("message.drugnotadded"));
+        }
 
         // Перенаправление на страницу админа
-        return ConfigurationManager.getProperty("path.page.admin");
+        return page;
     }
 }
