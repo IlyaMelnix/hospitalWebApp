@@ -10,13 +10,21 @@
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('.modal').modal();
                 $('select').material_select();
+                $('.datepicker').pickadate({
+                    selectMonths: true, // Creates a dropdown to control month
+                    selectYears: 15, // Creates a dropdown of 15 years to control year
+                    today: '',
+                    clear: 'Очистить',
+                    close: 'Закрыть',
+                    format: 'yyyy-mm-dd'
+                });
 
                 var test = "<%=request.getAttribute("toastContent")%>";
                 var $toastContent = $('<span>${toastContent}</span>');
-                //if ($toastContent != '<span></span>' && $toastContent != null ){
                 if (test != "null"){
                     Materialize.toast($toastContent, 5000);
                 }
+
             });
         </script>
     </body>

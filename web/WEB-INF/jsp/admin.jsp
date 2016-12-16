@@ -76,12 +76,8 @@
                             </div>
                         </div>
 
-                        <%--Удаление--%>
-
-
-
                         <div class="user-info">
-
+                                <%--Удаление--%>
                             <!-- Modal Trigger -->
                             <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteUser${user.iduser}">Удалить пользователя</a>
 
@@ -196,6 +192,7 @@
                             </div>
 
                             <p><strong>Процедуры</strong></p>
+
                             <ul class="collapsible" data-collapsible="expandable">
 
                                 <c:forEach var="procedure" items="${user.userProceduresList}">
@@ -203,7 +200,30 @@
                                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>
                                                 ${procedure.procedureName}
                                         </div>
-                                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                                        <div class="collapsible-body">
+
+
+                                            <%--Вывод подробного описания--%>
+                                            <div class="table-output">
+                                                <div class="col l3">
+                                                    <p><strong>ID</strong></p>
+                                                    <p><strong>Название</strong></p>
+                                                    <p><strong>Описание</strong></p>
+                                                    <p><strong>Продолжительность</strong></p>
+                                                    <p><strong>Дата начала</strong></p>
+                                                    <p><strong>Кол-во раз</strong></p>
+                                                </div>
+                                                <div class="col l9">
+                                                    <p>${procedure.idprocedure}</p>
+                                                    <p>${procedure.procedureName}</p>
+                                                    <p>${procedure.procedureDesc}</p>
+                                                    <p>${procedure.procedureDuration}</p>
+                                                    <p>${procedure.procedureStartDate}</p>
+                                                    <p>${procedure.procedureHowManyTimes}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -213,13 +233,62 @@
 
                             <!-- Modal Structure -->
                             <div id="addProcedure${user.iduser}" class="modal">
-                                <div class="modal-content">
-                                    <h4>Новое лекарство для: ${user.name} ${user.surname} </h4>
-                                    <p>Диагноз: ${user.diagnosis} </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Назначить процедуру</a>
-                                </div>
+
+                                <form name="AddProcedureForm" method="POST" action="controller">
+
+                                    <div class="modal-content">
+
+                                        <h4>Новая процедура для: ${user.name} ${user.surname} </h4>
+                                        <h5>Диагноз: ${user.diagnosis} </h5>
+
+                                        <input type="hidden" name="command" value="AddProcedure"/>
+                                        <input type="hidden" name="iduser" value="${user.iduser}"/>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="procedureName" type="text" class="validate" name="procedureName" length="45">
+                                                <label for="procedureName">Название процедуры</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <textarea id="procedureDesc" class="materialize-textarea validate" name="procedureDesc"></textarea>
+                                                <label for="procedureDesc">Описание процедуры</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="procedureDuration" type="number" class="validate" name="procedureDuration" length="10">
+                                                <label for="procedureDuration">Продолжительность процедуры (в минутах)</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <input id="procedureStartDate" type="date" class="datepicker" name="procedureStartDate">
+                                                <label for="procedureStartDate">Дата начала</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="procedureHowManyTimes" type="number" class="validate" name="procedureHowManyTimes" length="10">
+                                                <label for="procedureHowManyTimes">Количество раз</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Назначить процедуру
+                                            <i class="material-icons right">add</i>
+                                        </button>
+
+                                            <%--<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Выписать лекарство</a>--%>
+                                    </div>
+                                </form>
                             </div>
 
                             <p><strong>Операции</strong></p>

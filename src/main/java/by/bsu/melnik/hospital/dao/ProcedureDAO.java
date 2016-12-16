@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProcedureDAO {
 
     public List<Procedure> FindUserProcedures(int iduser);
+    public boolean AddProcedure(String procedureName, String procedureDesc, int procedureDuration, String procedureStartDate, int procedureHowManyTimes, int iduser);
+    public void delete(int iduser);
 }
