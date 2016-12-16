@@ -11,4 +11,5 @@ public interface DrugDAO {
 
     public List<Drug> FindUserDrugs(int iduser);
     public boolean AddDrug(String drugName, String drugDesc, String drugDosing, int iduser);
+    public void delete(int iddrug);
 }

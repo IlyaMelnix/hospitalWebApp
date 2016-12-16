@@ -125,22 +125,21 @@
 
                                             <%--Удаление --%>
 
-                                                <div class="col s12">
-                                                    <!-- Modal Trigger -->
-                                                    <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteDrug${drug.iddrug}">Удалить лекарство</a>
-                                                </div>
+                                            <!-- Modal Trigger -->
+                                            <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteDrug${drug.iddrug}">Удалить лекарство</a>
 
-                                                <!-- Modal Structure -->
-                                                <div id="deleteUser${user.iduser}" class="modal">
-                                                    <div class="modal-content">
-                                                        <h4>Вы уверены, что хотите удалить лекарство ${user.name}?</h4>
-                                                        <p>Операция не может быть отменена. Лекарство будет удалено из базы данных.</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>
-                                                        <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
-                                                    </div>
+                                            <!-- Modal Structure -->
+                                            <div id="deleteDrug${drug.iddrug}" class="modal">
+                                                <div class="modal-content">
+                                                    <h4>Вы уверены, что хотите удалить лекарство ${drug.drugName}?</h4>
+                                                    <p>Операция не может быть отменена. Лекарство будет удалено из базы данных.</p>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>
+                                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </li>
                                 </c:forEach>

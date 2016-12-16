@@ -27,6 +27,11 @@ public enum CommandEnum {
         {
             this.command = new AddDrugCommand();
         }
+    },
+    DELETEDRUG{
+        {
+            this.command = new DeleteDrugCommand();
+        }
     };
 
     ActionCommand command;

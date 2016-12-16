@@ -1,16 +1,15 @@
-    package by.bsu.melnik.hospital.command;
+package by.bsu.melnik.hospital.command;
 
-    import by.bsu.melnik.hospital.ConfigurationManager;
-    import by.bsu.melnik.hospital.MessageManager;
-    import by.bsu.melnik.hospital.dao.MySQLUserDAO;
+import by.bsu.melnik.hospital.ConfigurationManager;
+import by.bsu.melnik.hospital.MessageManager;
+import by.bsu.melnik.hospital.dao.MySQLUserDAO;
 import by.bsu.melnik.hospital.dao.UserDAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-    public class DeleteUserCommand implements ActionCommand{
+public class DeleteUserCommand implements ActionCommand {
 
     private static UserDAO userDAO = new MySQLUserDAO();
-
     private static final String ID = "id";
 
     @Override
@@ -27,7 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 
         // Сообщение об удалении пользователя
         request.setAttribute("toastContent", MessageManager.getProperty("message.userdeleted"));
-
         // Перенаправление на страницу админа
         return ConfigurationManager.getProperty("path.page.admin");
     }

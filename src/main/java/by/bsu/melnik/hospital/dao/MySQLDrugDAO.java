@@ -13,6 +13,7 @@ public class MySQLDrugDAO implements DrugDAO {
 
     private static final String FIND_DRUGS_BY_IDUSER = "SELECT * FROM hospital.drug WHERE hospital.drug.user_iduser = ?;";
     private static final String ADD_DRUG = "INSERT INTO `hospital`.`drug` (`drugName`, `drugDesc`, `drugDosing`, `user_iduser`) VALUES (?, ?, ?, ?);";
+    private static final String DELETE_DRUG_BY_ID = "DELETE FROM `hospital`.`drug` WHERE `hospital`.`drug`.`iddrug` = ?;";
 
     private ConnectionPool pool = ConnectionPool.getInstance();
 
@@ -99,6 +100,26 @@ public class MySQLDrugDAO implements DrugDAO {
         }
 
         return true;
+    }
+
+    @Override
+    public void delete(int iddrug) {
+        
+        Connection connection = null;
+        try {
+
+            connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(DELETE_DRUG_BY_ID);
+            statement.setInt(1, iddrug);
+            int count = statement.executeUpdate();
+
+            // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
+        }
     }
 
 }
