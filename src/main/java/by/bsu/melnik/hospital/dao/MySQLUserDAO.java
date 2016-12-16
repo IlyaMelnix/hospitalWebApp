@@ -2,7 +2,10 @@ package by.bsu.melnik.hospital.dao;
 
 import by.bsu.melnik.hospital.model.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class MySQLUserDAO implements UserDAO {
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     private static DrugDAO drugDAO = new MySQLDrugDAO();
+    private static ProcedureDAO procedureDAO = new MySQLProcedureDAO();
+    private static OperationDAO operationDAO = new MySQLOperationDAO();
 
     private User extractUser(ResultSet resultSet) throws SQLException {
 
@@ -39,11 +44,9 @@ public class MySQLUserDAO implements UserDAO {
         user.setDiagnosis(resultSet.getString("diagnosis"));
 
         // Создаём новые списки болезней, операций и процедур для этого пользователя.
-        // TODO: Создаём новые списки болезней, операций и процедур для этого пользователя.
-        // TODO: Создать дао для каждой таблицы
         user.setUserDrugsList(drugDAO.FindUserDrugs(user.getIduser()));
-        user.setUserOperationList(null);
-        user.setUserProceduresList(null);
+        user.setUserOperationList(operationDAO.FindUserOperations(user.getIduser()));
+        user.setUserProceduresList(procedureDAO.FindUserProcedures(user.getIduser()));
         return user;
     }
 
@@ -205,14 +208,16 @@ public class MySQLUserDAO implements UserDAO {
         try {
 
             connection = pool.getConnection();
-            PreparedStatement st = connection.prepareStatement(DELETE_USER_BY_ID);
-            st.setInt(1, iduser);
-            int count = st.executeUpdate();
+            PreparedStatement statement = connection.prepareStatement(DELETE_USER_BY_ID);
+            statement.setInt(1, iduser);
+            int count = statement.executeUpdate();
 
             // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
         }
 
     }

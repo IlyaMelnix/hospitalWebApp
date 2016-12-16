@@ -11,20 +11,18 @@ public class Procedure {
     private int procedureHowManyTimes;
     private String procedureName;
     private String procedureDesc;
-    private String drugDosing;
     private Date procedureStartDate;
 
     // CONSTRUCTORS
     public Procedure() {
     }
-    public Procedure(int idprocedure, int iduser, int procedureDuration, int procedureHowManyTimes, String procedureName, String procedureDesc, String drugDosing, Date procedureStartDate) {
+    public Procedure(int idprocedure, int iduser, int procedureDuration, int procedureHowManyTimes, String procedureName, String procedureDesc, Date procedureStartDate) {
         this.idprocedure = idprocedure;
         this.iduser = iduser;
         this.procedureDuration = procedureDuration;
         this.procedureHowManyTimes = procedureHowManyTimes;
         this.procedureName = procedureName;
         this.procedureDesc = procedureDesc;
-        this.drugDosing = drugDosing;
         this.procedureStartDate = procedureStartDate;
     }
 
@@ -71,13 +69,6 @@ public class Procedure {
         this.procedureDesc = procedureDesc;
     }
 
-    public String getDrugDosing() {
-        return drugDosing;
-    }
-    public void setDrugDosing(String drugDosing) {
-        this.drugDosing = drugDosing;
-    }
-
     public Date getProcedureStartDate() {
         return procedureStartDate;
     }
@@ -94,7 +85,6 @@ public class Procedure {
                 ", procedureHowManyTimes=" + procedureHowManyTimes +
                 ", procedureName='" + procedureName + '\'' +
                 ", procedureDesc='" + procedureDesc + '\'' +
-                ", drugDosing='" + drugDosing + '\'' +
                 ", procedureStartDate=" + procedureStartDate +
                 '}';
     }

@@ -1,10 +1,6 @@
 package by.bsu.melnik.hospital.command.client;
 
-import by.bsu.melnik.hospital.command.ActionCommand;
-import by.bsu.melnik.hospital.command.CreateNewUserCommand;
-import by.bsu.melnik.hospital.command.LoginCommand;
-import by.bsu.melnik.hospital.command.LogoutCommand;
-import by.bsu.melnik.hospital.command.DeleteUserCommand;
+import by.bsu.melnik.hospital.command.*;
 
 public enum CommandEnum {
     LOGIN {
@@ -25,6 +21,11 @@ public enum CommandEnum {
     DELETEUSER {
         {
             this.command = new DeleteUserCommand();
+        }
+    },
+    ADDDRUG{
+        {
+            this.command = new AddDrugCommand();
         }
     };
 

@@ -45,7 +45,7 @@ public class MySQLDrugDAO implements DrugDAO {
 
                 Drug drug = extractDrug(resultSet);
                 userDrugs.add(drug);
-                System.out.println("Добавлен пользователь в users! " + drug);
+                System.out.println("Добавлено лекарство в users! " + drug);
             }
 
         } catch (SQLException e) {

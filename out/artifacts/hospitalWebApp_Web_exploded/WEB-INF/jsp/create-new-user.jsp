@@ -2,13 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%-- Загрузка html, head, и начала body --%>
-<%--<jsp:include page="header.jsp"/>--%>
-<html>
-<head>
+<jsp:include page="header.jsp"/>
 
-    <title>Система "Больница"</title>
-</head>
-<body>
     <h1>Регистрация нового пользователя</h1>
 
     <form name="CreateNewUserForm" method="POST" action="controller">
@@ -61,9 +56,6 @@
         <input type="submit" value="Зарегистрировать пользователя"/>
     </form>
 
-<%-- Загрузка конца body, импорт js, html --%>
-<%--<jsp:include page="footer.jsp"/>--%>
+ <%--Загрузка конца body, импорт js, html --%>
+<jsp:include page="footer.jsp"/>
 
-
-</body>
-</html>

@@ -35,11 +35,16 @@ public class CreateNewUserCommand implements ActionCommand {
         String patronymic   = request.getParameter(PATRONYMIC);
         String diagnosis    = request.getParameter(DIAGNOSIS);
         String statusStr    = request.getParameter(STATUS);
-        int status = Integer.parseInt(statusStr);
+
 
         // Проверка полей
         // TODO: Проверить поля + username на уникальность + совпадение паролей
         // TODO: Добавить сохранение содержимого полей
+        if (username == null || username.equals("") ||
+                password == null || password.equals("") )
+            return page;
+
+        int status = Integer.parseInt(statusStr);
 
         // Попытка создания пользователя
         User NewUser = userDAO.createNewUser(username, password, name, surname, patronymic, diagnosis, status);
