@@ -56,7 +56,7 @@ public class AddProcedureCommand implements ActionCommand {
 //        }
 
         // Попытка добавления лекарства
-        if (procedureDAO.AddProcedure(procedureName, procedureDesc, procedureDuration, procedureStartDate, procedureHowManyTimes, iduser)) {
+        if (procedureDAO.addProcedure(procedureName, procedureDesc, procedureDuration, procedureStartDate, procedureHowManyTimes, iduser)) {
             request.setAttribute("toastContent", MessageManager.getProperty("message.procedureadded"));
             // Обновление списка пользователей
             request.getSession().setAttribute("users", userDAO.findAllUsers());

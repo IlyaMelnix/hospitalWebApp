@@ -85,7 +85,7 @@
                             <div id="deleteUser${user.iduser}" class="modal">
                                 <div class="modal-content">
                                     <h4>Вы уверены, что хотите удалить пользователя ${user.name}?</h4>
-                                    <p>Операция не может быть отменена. Пользователь будет удалён из базы данных. Связанные с ним лекарства, процедуры и операции будут удалены.</p>
+                                    <p>Действие не может быть отменено. Пользователь будет удалён из базы данных. Связанные с ним лекарства, процедуры и операции будут удалены.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteUser&id=<c:out value="${user.iduser}"/>">Удалить пользователя</a>
@@ -128,7 +128,7 @@
                                             <div id="deleteDrug${drug.iddrug}" class="modal">
                                                 <div class="modal-content">
                                                     <h4>Вы уверены, что хотите удалить лекарство ${drug.drugName}?</h4>
-                                                    <p>Операция не может быть отменена. Лекарство будет удалено из базы данных.</p>
+                                                    <p>Действие не может быть отменено. Лекарство будет удалено из базы данных.</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>
@@ -220,6 +220,24 @@
                                                     <p>${procedure.procedureDuration}</p>
                                                     <p>${procedure.procedureStartDate}</p>
                                                     <p>${procedure.procedureHowManyTimes}</p>
+                                                </div>
+                                            </div>
+
+
+                                            <%--Удаление --%>
+
+                                            <!-- Modal Trigger -->
+                                            <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteProcedure${procedure.idprocedure}">Удалить процедуру</a>
+
+                                            <!-- Modal Structure -->
+                                            <div id="deleteProcedure${procedure.idprocedure}" class="modal">
+                                                <div class="modal-content">
+                                                    <h4>Вы уверены, что хотите удалить процедуру ${procedure.procedureName}?</h4>
+                                                    <p>Действие не может быть отменено. Процедура будет удалена из базы данных.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteProcedure&id=<c:out value="${procedure.idprocedure}"/>">Удалить процедуру</a>
+                                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
                                                 </div>
                                             </div>
 

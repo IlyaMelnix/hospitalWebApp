@@ -16,6 +16,7 @@ public class MySQLProcedureDAO implements ProcedureDAO {
 
     private static final String FIND_PROCEDURES_BY_IDUSER = "SELECT * FROM hospital.procedure WHERE hospital.procedure.user_iduser = ?;";
     private static final String ADD_PROCEDURE = "INSERT INTO `hospital`.`procedure` (`procedureName`, `procedureDesc`, `procedureDuration`, `procedureStartDate`, `procedureHowManyTimes`, `user_iduser`) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String DELETE_PROCEDURE_BY_ID = "DELETE FROM `hospital`.`procedure` WHERE `hospital`.`procedure`.`idprocedure` = ?;";
     private ConnectionPool pool = ConnectionPool.getInstance();
 
 
@@ -67,7 +68,7 @@ public class MySQLProcedureDAO implements ProcedureDAO {
     }
 
     @Override
-    public boolean AddProcedure(String procedureName, String procedureDesc, int procedureDuration, String procedureStartDate, int procedureHowManyTimes, int iduser) {
+    public boolean addProcedure(String procedureName, String procedureDesc, int procedureDuration, String procedureStartDate, int procedureHowManyTimes, int iduser) {
 
         // Создание объектов
         Connection connection = null;
@@ -79,9 +80,7 @@ public class MySQLProcedureDAO implements ProcedureDAO {
             // Запрос на получение соединения
             connection = pool.getConnection();
 
-            // Date
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+            // Определение даты
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date parsed = format.parse(procedureStartDate);
             java.sql.Date procedureStartDateSQL = new java.sql.Date(parsed.getTime());
@@ -113,7 +112,23 @@ public class MySQLProcedureDAO implements ProcedureDAO {
 
 
     @Override
-    public void delete(int iduser) {
+    public void delete(int idprocedure) {
+
+        Connection connection = null;
+        try {
+
+            connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(DELETE_PROCEDURE_BY_ID);
+            statement.setInt(1, idprocedure);
+            int count = statement.executeUpdate();
+
+            // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
+        }
 
     }
 }
