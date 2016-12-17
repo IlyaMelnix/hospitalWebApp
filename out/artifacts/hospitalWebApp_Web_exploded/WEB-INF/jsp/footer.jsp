@@ -7,8 +7,11 @@
 
         <script>
             $(document).ready(function(){
+
+                // Инициализация "бургера" для мобильных устройств
+                $(".button-collapse").sideNav();
+
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                $('.tooltipped').tooltip({delay: 50});
                 $('.modal').modal();
                 $('select').material_select();
                 $('.datepicker').pickadate({

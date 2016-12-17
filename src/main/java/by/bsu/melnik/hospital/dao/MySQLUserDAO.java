@@ -22,7 +22,8 @@ public class MySQLUserDAO implements UserDAO {
             "(`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus ORDER BY user.status_idstatus ASC;";
+    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus;";
+    //private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus ORDER BY user.status_idstatus ASC;";
     private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
     private static final String DISCHARGE_USER = "UPDATE `hospital`.`user` SET `status_idstatus` = 0 WHERE `iduser` = ?;";
     private ConnectionPool pool = ConnectionPool.getInstance();

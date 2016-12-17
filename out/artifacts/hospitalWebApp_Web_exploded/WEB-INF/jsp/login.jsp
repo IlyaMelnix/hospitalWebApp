@@ -7,14 +7,14 @@
 
     <div class="valign width100">
         <div class="row">
-            <div class="col s4 offset-s4">
+            <div class="col l4 offset-l4 s12">
             <h5 class="center-align">Пожалуйста, войдите в систему</h5>
             <h6 class="center-align light">Чтобы войти в систему, воспользуйтесь логином и паролем, выданным Вам Вашим врачом.</h6>
             </div>
         </div>
 
         <div class="row">
-            <div class="col s4 offset-s4 card z-depth-5">
+            <div class="col l4 offset-l4 s12 card z-depth-5">
 
                 <form name="LoginForm" method="POST" action="controller" class="margin30px">
                     <input type="hidden" name="command" value="Login"/>

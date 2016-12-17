@@ -5,8 +5,8 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red" href="controller?command=createNewUser" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">
+    <div class="fixed-action-btn" >
+        <a class="btn-floating btn-large red tooltipped" href="controller?command=createNewUser" data-position="left" data-delay="50" data-tooltip="Зарегистрировать нового пользователя">
             <i class="large material-icons">person_add</i>
         </a>
     </div>
