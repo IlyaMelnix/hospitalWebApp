@@ -39,8 +39,8 @@
                 <div class="row">
 
                     <div class="input-field col s12">
-                        <input id="login" type="text" class="validate" length="16" name="username" value="${user.username}">
-                        <label for="login">Логин (используется при входе в систему)</label>
+                        <input id="username" type="text" class="validate" length="16" name="username" value="${user.username}">
+                        <label for="username">Логин (используется при входе в систему)</label>
                     </div>
 
                     <div class="input-field col s12">

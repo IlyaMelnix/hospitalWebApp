@@ -36,6 +36,7 @@ public class CreateNewUserCommand implements ActionCommand {
 
         String page = ConfigurationManager.getProperty("path.page.create-new-user");
 
+
         // Извлечение из запроса параметров для регистрации
         String username     = request.getParameter(USERNAME);
         String password     = request.getParameter(PASSWORD);
@@ -46,21 +47,41 @@ public class CreateNewUserCommand implements ActionCommand {
         String diagnosis    = request.getParameter(DIAGNOSIS);
         String statusStr    = request.getParameter(STATUS);
 
+        User user = new User();
+
+        boolean wrongField = false;
+
+        // Проверка и сохранение полей в user при возможности
+        if(username != null     && !username.equals(""))    { user.setUsername(username); }                 else { wrongField = true; }
+        if(password != null     && !password.equals(""))    { user.setPassword(password); }                 else { wrongField = true; }
+        if(name != null         && !name.equals(""))        { user.setName(name); }                         else { wrongField = true; }
+        if(surname != null      && !surname.equals(""))     { user.setSurname(surname); }                   else { wrongField = true; }
+        if(patronymic != null   && !patronymic.equals(""))  { user.setPatronymic(patronymic); }             else { wrongField = true; }
+        if(diagnosis != null    && !diagnosis.equals(""))   { user.setDiagnosis(diagnosis); }               else { wrongField = true; }
+        if(statusStr != null    && !statusStr.equals(""))   { user.setIdstatus(Integer.parseInt(statusStr));}else{ wrongField = true; }
+
+        // Передача user в запрос, чтобы сохранить уже заполненные поля
+        request.setAttribute("user",user);
 
         // Проверка полей
-        // TODO: Проверить поля + username на уникальность + совпадение паролей
-        // TODO: Добавить сохранение содержимого полей
-        if (username == null || username.equals("") ||
-                password == null || password.equals("") )
+        if (wrongField) {
+            request.setAttribute("toastContent", MessageManager.getProperty("message.wrondfield"));
             return page;
+        }
 
-        int status = Integer.parseInt(statusStr);
+        // Проверка совпадения паролей
+        if (!user.getPassword().equals(passwordCheck)){
+            request.setAttribute("toastContent", MessageManager.getProperty("message.wrongpassword"));
+            request.setAttribute("user", user);
+            return page;
+        }
 
         // Попытка создания пользователя
-        User NewUser = userDAO.createNewUser(username, password, name, surname, patronymic, diagnosis, status);
+        user = userDAO.createNewUser(username, password, name, surname, patronymic, diagnosis, Integer.parseInt(statusStr));
 
         // Проверка создания пользователя
-        if (NewUser != null){
+        if (user != null){
+
 
             // Сообщение о создании пользователя
             request.setAttribute("toastContent", MessageManager.getProperty("message.usercreated"));

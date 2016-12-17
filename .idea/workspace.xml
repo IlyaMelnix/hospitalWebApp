@@ -2,46 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="766353b4-0dad-4e81-8d9f-b6bbde8cb28e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/UpdateUserCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/CreateNewUserCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/CreateNewUserCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/LoginCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/LoginCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$10.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$11.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$4.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$5.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$6.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$7.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$8.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$9.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/client/CommandEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/dao/MySQLUserDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/dao/MySQLUserDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/dao/UserDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/dao/UserDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/UpdateUserCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/by/bsu/melnik/hospital/command/UpdateUserCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/CreateNewUserCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/CreateNewUserCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/LoginCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/LoginCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$10.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$11.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$4.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$5.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$6.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$7.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$8.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$9.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/client/CommandEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/dao/MySQLUserDAO.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/dao/MySQLUserDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/dao/UserDAO.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/dao/UserDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/UpdateUserCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/bsu/melnik/hospital/command/UpdateUserCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/messages.properties" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/classes/messages.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/jsp/create-new-user.jsp" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/jsp/create-new-user.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/jsp/header.jsp" afterPath="$PROJECT_DIR$/out/artifacts/hospitalWebApp_Web_exploded/WEB-INF/jsp/header.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/LoginCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/LoginCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/client/CommandEnum.java" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/client/CommandEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/MySQLUserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/MySQLUserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/UserDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties" afterPath="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages.properties" afterPath="$PROJECT_DIR$/target/classes/messages.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -152,7 +123,7 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="217">
               <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
@@ -162,8 +133,8 @@
       <file leaf-file-name="create-new-user.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-576">
-              <caret line="52" column="80" lean-forward="false" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
+            <state relative-caret-position="198">
+              <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -199,11 +170,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateUserCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UpdateUserCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/UpdateUserCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1494">
-              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+            <state relative-caret-position="522">
+              <caret line="83" column="9" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="83" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -211,11 +182,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateNewUserCommand.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CreateNewUserCommand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="613">
+              <caret line="62" column="71" lean-forward="false" selection-start-line="62" selection-start-column="71" selection-end-line="62" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -227,7 +198,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
-              <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+              <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -337,12 +308,12 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/admin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/dao/MySQLUserDAO.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/LoginCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/UpdateUserCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java" />
       </list>
     </option>
   </component>
@@ -1415,12 +1386,12 @@
       <workItem from="1481797531688" duration="21439000" />
       <workItem from="1481836969113" duration="590000" />
       <workItem from="1481887443904" duration="37753000" />
-      <workItem from="1481975181065" duration="28579000" />
+      <workItem from="1481975181065" duration="32539000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195529000" />
+    <option name="totallyTimeSpent" value="199489000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1917,30 +1888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="52" column="80" lean-forward="false" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -1973,20 +1920,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/properties/messages.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="54">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/UpdateUserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="83" column="9" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="83" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/UpdateUserCommand.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/create-new-user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1494">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        <state relative-caret-position="198">
+          <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/bsu/melnik/hospital/command/CreateNewUserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="62" column="71" lean-forward="false" selection-start-line="62" selection-start-column="71" selection-end-line="62" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
