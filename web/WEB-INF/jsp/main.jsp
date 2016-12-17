@@ -27,6 +27,27 @@
                                 </div>
                                 <div class="collapsible-body">
 
+                                    <%--<table class="highlight">--%>
+                                        <%--<tbody>--%>
+                                        <%--<tr>--%>
+                                            <%--<td><strong>ID</strong></td>--%>
+                                            <%--<td>${drug.iddrug}</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td><strong>Название</strong></td>--%>
+                                            <%--<td>${drug.drugName}</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td><strong>Описание</strong></td>--%>
+                                            <%--<td>${drug.drugDesc}</td>--%>
+                                        <%--</tr>--%>
+                                        <%--<tr>--%>
+                                            <%--<td><strong>Способ применения</strong></td>--%>
+                                            <%--<td>${drug.drugDosing}</td>--%>
+                                        <%--</tr>--%>
+                                        <%--</tbody>--%>
+                                    <%--</table>--%>
+
                                         <%--Вывод подробного описания--%>
                                     <div class="table-output">
                                         <div class="col l3">
@@ -40,6 +61,40 @@
                                             <p>${drug.drugName}</p>
                                             <p>${drug.drugDesc}</p>
                                             <p>${drug.drugDosing}</p>
+                                        </div>
+                                    </div>
+                                    <div class="table-output">
+                                        <div class="row">
+                                            <div class="col l3 m3 s12">
+                                                <p><strong>ID</strong></p>
+                                            </div>
+                                            <div class="col l9 m9 s12">
+                                                <p>${drug.iddrug}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col l3 m3 s12">
+                                                <p><strong>Название</strong></p>
+                                            </div>
+                                            <div class="col l9 m9 s12">
+                                                <p>${drug.drugName}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col l3 m3 s12">
+                                                <p><strong>Описание</strong></p>
+                                            </div>
+                                            <div class="col l9 m9 s12">
+                                                <p>${drug.drugDesc}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col l3 m3 s12">
+                                                <p><strong>Способ применения</strong></p>
+                                            </div>
+                                            <div class="col l9 m9 s12">
+                                                <p>${drug.drugDosing}</p>
+                                            </div>
                                         </div>
                                     </div>
 

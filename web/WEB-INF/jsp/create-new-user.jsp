@@ -73,8 +73,8 @@
                     <c:if test="${currentUser.idstatus==3}">
 
                         <div class="input-field col s12">
-                            <input id="diagnosis" type="text" class="validate" length="45" name="diagnosis" value="${user.diagnosis}">
-                            <label for="diagnosis">Диагноз (не обязательно)</label>
+                            <input ${user.idstatus == 0 ? 'disabled' : ''} id="diagnosis" type="text" class="validate" length="45" name="diagnosis" value="${user.diagnosis}">
+                            <label for="diagnosis">Диагноз (${user.idstatus == 0 ? 'не может изменяться для выписанного пациента' : 'не обязательно'})</label>
                         </div>
 
                         <div class="input-field col s12">

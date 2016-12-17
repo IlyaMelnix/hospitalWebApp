@@ -5,11 +5,14 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <div class="fixed-action-btn" >
-        <a class="btn-floating btn-large red tooltipped" href="controller?command=createNewUser" data-position="left" data-delay="50" data-tooltip="Зарегистрировать нового пользователя">
-            <i class="large material-icons">person_add</i>
-        </a>
-    </div>
+
+    <c:if test="${currentUser.idstatus==3}">
+        <div class="fixed-action-btn" >
+            <a class="btn-floating btn-large red tooltipped" href="controller?command=createNewUser" data-position="left" data-delay="50" data-tooltip="Зарегистрировать нового пользователя">
+                <i class="large material-icons">person_add</i>
+            </a>
+        </div>
+    </c:if>
     <div class="row">
         <div>
 
@@ -26,6 +29,7 @@
                         ${user.name} ${user.surname}
                     </div>
                     <div class="collapsible-body white">
+
                         <div class="table-output">
                             <div class="col l3">
                                 <p><strong>ID</strong></p>
@@ -49,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="user-info">
+                        <c class="user-info">
 
                             <%--Изменение--%>
                             <a class="waves-effect waves-green btn-flat" href="controller?command=updateUser&id=<c:out value="${user.iduser}"/>">Изменить пользователя</a>
@@ -76,20 +80,24 @@
                             </c:if>
 
                             <%--Удаление--%>
-                            <!-- Modal Trigger -->
-                            <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteUser${user.iduser}">Удалить пользователя</a>
+                            <c:if test="${currentUser.idstatus==3}">
 
-                            <!-- Modal Structure -->
-                            <div id="deleteUser${user.iduser}" class="modal">
-                                <div class="modal-content">
-                                    <h4>Вы уверены, что хотите удалить пользователя ${user.name}?</h4>
-                                    <p>Действие не может быть отменено. Пользователь будет удалён из базы данных. Связанные с ним лекарства, процедуры и операции будут удалены.</p>
+                                <!-- Modal Trigger -->
+                                <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteUser${user.iduser}">Удалить пользователя</a>
+
+                                <!-- Modal Structure -->
+                                <div id="deleteUser${user.iduser}" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Вы уверены, что хотите удалить пользователя ${user.name}?</h4>
+                                        <p>Действие не может быть отменено. Пользователь будет удалён из базы данных. Связанные с ним лекарства, процедуры и операции будут удалены.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteUser&id=<c:out value="${user.iduser}"/>">Удалить пользователя</a>
+                                        <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteUser&id=<c:out value="${user.iduser}"/>">Удалить пользователя</a>
-                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
-                                </div>
-                            </div>
+
+                            </c:if>
 
                             <p><strong>Лекарства</strong></p>
                             <ul class="collapsible" data-collapsible="expandable">
