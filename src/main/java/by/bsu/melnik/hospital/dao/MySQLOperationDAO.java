@@ -17,6 +17,8 @@ public class MySQLOperationDAO implements OperationDAO {
 
     private static final String FIND_OPERATIONS_BY_IDUSER = "SELECT * FROM hospital.operation WHERE hospital.operation.user_iduser = ?;";
     private static final String ADD_OPERATION = "INSERT INTO `hospital`.`operation` (`operationName`, `operationDesc`, `operationDate`, `user_iduser`) VALUES (?, ?, ?, ?);";
+    private static final String DELETE_OPERATION_BY_ID = "DELETE FROM `hospital`.`operation` WHERE `hospital`.`operation`.`idoperation` = ?;";
+
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     private Operation extractOperation(ResultSet resultSet) throws SQLException {
@@ -103,6 +105,26 @@ public class MySQLOperationDAO implements OperationDAO {
         }
 
         return true;
+    }
+
+    @Override
+    public void delete(int idoperation) {
+
+        Connection connection = null;
+        try {
+
+            connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(DELETE_OPERATION_BY_ID);
+            statement.setInt(1, idoperation);
+            int count = statement.executeUpdate();
+
+            // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
+        }
     }
 
 }

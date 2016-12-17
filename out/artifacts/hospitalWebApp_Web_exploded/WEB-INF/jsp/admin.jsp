@@ -335,6 +335,23 @@
                                                 </div>
                                             </div>
 
+                                            <%--Удаление --%>
+
+                                            <!-- Modal Trigger -->
+                                            <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteOperation${operation.idoperation}">Удалить операцию</a>
+
+                                            <!-- Modal Structure -->
+                                            <div id="deleteOperation${operation.idoperation}" class="modal">
+                                                <div class="modal-content">
+                                                    <h4>Вы уверены, что хотите удалить операцию ${operation.operationName}?</h4>
+                                                    <p>Действие не может быть отменено. Операция будет удалена из базы данных.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteOperation&id=<c:out value="${operation.idoperation}"/>">Удалить операцию</a>
+                                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </li>
                                 </c:forEach>
