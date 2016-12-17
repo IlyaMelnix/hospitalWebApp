@@ -12,10 +12,11 @@ import java.util.List;
 public interface UserDAO {
 
     public List<User> findAllUsers();
+    public User findUserByID(int iduser);
     public User searchUserByUsernameAndPassword(String username, String password);
     public User createNewUser(String username, String password, String name, String surname, String patronymic, String diagnosis, int status);
+    public User update (User user, int id);
     public void dischargeUser(int iduser);
-    public void update (User user);
     public void delete (int iduser);
 
 }

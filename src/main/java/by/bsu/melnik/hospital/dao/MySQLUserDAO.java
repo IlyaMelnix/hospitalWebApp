@@ -26,6 +26,9 @@ public class MySQLUserDAO implements UserDAO {
     //private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus ORDER BY user.status_idstatus ASC;";
     private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
     private static final String DISCHARGE_USER = "UPDATE `hospital`.`user` SET `status_idstatus` = 0 WHERE `iduser` = ?;";
+    private static final String FIND_USER_BY_ID = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus WHERE user.iduser = ?;";
+    private static final String UPDATE_USER = "UPDATE `hospital`.`user` SET `username` = ?, `password` = ?, `name` = ?, `surname` = ?, `patronymic` = ?, `diagnosis` = ?, `status_idstatus` = ? WHERE `iduser` = ?;";
+
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     private static DrugDAO drugDAO = new MySQLDrugDAO();
@@ -176,6 +179,57 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     @Override
+    public User findUserByID(int iduser) {
+
+        // Создание нового пользователя
+        User user = null;
+
+        // Создание объектов
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            // Запрос на получение соединения
+            connection = pool.getConnection();
+
+            // Добавление в запрос параметров username и password
+            preparedStatement = connection.prepareStatement(FIND_USER_BY_ID);
+            preparedStatement.setInt(1, iduser);
+
+            // Выполнение запроса и получение набора пользователей
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Если не найдено пользователей - вернуть null
+            if (!resultSet.next()){
+                return user;
+            }
+
+            // Если найдено несколько пользователей - создать исключение
+            int resultSetSize = resultSet.getFetchSize();
+            if (resultSetSize > 1){
+                throw new DAOException("Найдено более одного пользователя с id " + iduser);
+            }
+
+            // Если пользователь найден - сохраним его в user
+            user = extractUser(resultSet);
+
+            // Возвращаем созданного пользователя
+            //return user;
+
+        } catch (SQLException | DAOException e) {
+            e.printStackTrace();
+        } finally {
+
+            // Запрос на получение соединения
+            pool.releaseConnection(connection);
+        }
+
+        // Возвращаем созданного пользователя
+        return user;
+    }
+
+    @Override
     public void dischargeUser(int iduser) {
 
         Connection connection = null;
@@ -196,9 +250,41 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     @Override
-    public void update(User user) {
+    public User update(User user, int id) {
 
+        // Создание объектов
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        // Добавление пользователя
+        try {
 
+            // Запрос на получение соединения
+            connection = pool.getConnection();
+
+            // Создание запроса на update
+            preparedStatement = connection.prepareStatement(UPDATE_USER);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getName());
+            preparedStatement.setString(4, user.getSurname());
+            preparedStatement.setString(5, user.getPatronymic());
+            preparedStatement.setString(6, user.getDiagnosis());
+            preparedStatement.setInt(7, user.getIdstatus());
+            preparedStatement.setInt(8, id);
+
+            // Выполнение запроса
+            preparedStatement.execute();
+            System.out.println("Пользователь успешно обновлён!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Закрытие соединения
+            pool.releaseConnection(connection);
+        }
+
+        // Возвращение объекта User
+        return findUserByID(id);
     }
 
     public void delete(int iduser) {

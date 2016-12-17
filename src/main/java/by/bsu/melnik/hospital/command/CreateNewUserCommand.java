@@ -19,10 +19,20 @@ public class CreateNewUserCommand implements ActionCommand {
     private static final String DIAGNOSIS = "diagnosis";
     private static final String STATUS = "status";
 
+    private static final String ID = "id";
+//
+//    private static final int FINISH = 0;
+//    private static final int CREATE = 1;
+//    private static final int UPDATE = 2;
+//    private static final int UPDATE_CURRENT = 3;
+
     private static UserDAO userDAO = new MySQLUserDAO();
 
     @Override
     public String execute(HttpServletRequest request) {
+
+
+        request.setAttribute("type", "Регистрация нового пользователя");
 
         String page = ConfigurationManager.getProperty("path.page.create-new-user");
 

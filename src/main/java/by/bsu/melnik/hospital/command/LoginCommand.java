@@ -19,33 +19,40 @@ public class LoginCommand implements ActionCommand {
     public String execute(HttpServletRequest request) {
 
         String page = null;
+        User currentUser = null;
 
-        // Извлечение из запроса логина и пароля
-        String login = request.getParameter(LOGIN);
-        String password = request.getParameter(PASSWORD);
+        // Возможно, пользователь уже в системе.
+        if (request.getSession().getAttribute("currentUser") == null){
 
-        // Попытка создания текущего пользователя
-        User CurrentUser = userDAO.searchUserByUsernameAndPassword(login,password);
-        // Проверка логина и пароля
-        if (CurrentUser!=null){
+            // Извлечение из запроса логина и пароля
+            String login = request.getParameter(LOGIN);
+            String password = request.getParameter(PASSWORD);
 
-            request.setAttribute("user",login);
-            request.getSession().setAttribute("currentUser",CurrentUser);
-
-            // Определение пути
-            if (CurrentUser.getIdstatus() < 2)
-                page = ConfigurationManager.getProperty("path.page.main");
-            else {
-                request.getSession().setAttribute("users", userDAO.findAllUsers());
-                page = ConfigurationManager.getProperty("path.page.admin");
+            // Попытка создания текущего пользователя
+            currentUser = userDAO.searchUserByUsernameAndPassword(login,password);
+            if (currentUser!=null) {
+                request.getSession().setAttribute("currentUser",currentUser);
             }
-        } else {
+            else {
 
-            request.setAttribute("errorLoginOrPassMessage", MessageManager.getProperty("message.loginerror"));
+                request.setAttribute("toastContent", MessageManager.getProperty("message.loginerror"));
 
-            //page = "/WEB-INF/jsp/error.jsp";
-            page = ConfigurationManager.getProperty("path.page.login");
+                //page = "/WEB-INF/jsp/error.jsp";
+                page = ConfigurationManager.getProperty("path.page.login");
+            }
         }
+        else {
+            currentUser = (User) (request.getSession().getAttribute("currentUser"));
+        }
+
+        // Определение пути
+        if (currentUser.getIdstatus() < 2)
+            page = ConfigurationManager.getProperty("path.page.main");
+        else {
+            request.getSession().setAttribute("users", userDAO.findAllUsers());
+            page = ConfigurationManager.getProperty("path.page.admin");
+        }
+
         return page;
     }
 }

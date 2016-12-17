@@ -18,12 +18,20 @@
 
     <nav>
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo light"><i class="large material-icons">local_hospital</i>Больница</a>
+            <a href="controller?command=login" class="brand-logo light"><i class="large material-icons">local_hospital</i>Больница</a>
+
 
             <c:if test="${currentUser != null}">
 
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
                 <ul class="right hide-on-med-and-down">
-                    <li><i class="material-icons left">person</i>${currentUser.status} ${currentUser.name}</li>
+                    <li><a href="controller?command=UpdateUser&id=${currentUser.iduser}"><i class="material-icons left">person</i>${currentUser.status} ${currentUser.name}</a></li>
+                    <li><a href="controller?command=Logout" class="waves-effect waves-light btn">Выйти из системы</a></li>
+                </ul>
+
+                <ul class="side-nav" id="mobile-demo">
+                    <li class="black-text center-align"><a href="controller?command=UpdateUser&id=${currentUser.iduser}"><i class="material-icons">person</i>${currentUser.status} ${currentUser.name}</a></li>
                     <li><a href="controller?command=Logout" class="waves-effect waves-light btn">Выйти из системы</a></li>
                 </ul>
 

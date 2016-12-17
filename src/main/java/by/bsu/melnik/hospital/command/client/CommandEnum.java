@@ -18,6 +18,11 @@ public enum CommandEnum {
             this.command = new CreateNewUserCommand();
         }
     },
+    UPDATEUSER {
+        {
+            this.command = new UpdateUserCommand();
+        }
+    },
     DELETEUSER {
         {
             this.command = new DeleteUserCommand();

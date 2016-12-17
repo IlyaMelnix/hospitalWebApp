@@ -8,7 +8,25 @@
 
     <div class="row">
         <div class="col l6 offset-l3 s12">
-            <h5 class="center-align">Регистрация нового пользователя</h5>
+
+
+            <h5 class="center-align">
+
+                <%--
+                    TYPE ENUM:
+                    finish = 0
+                    create = 1
+                    update = 2
+                    updateCurrent = 3
+                --%>
+                <%--<c:if test="${type == 1}">Регистрация нового пользователя</c:if>--%>
+                <%--<c:if test="${type == 2}">Редактирование пользователя</c:if>--%>
+                <%--<c:if test="${type == 3}">Редактирование вашего профиля</c:if>--%>
+
+                ${type}
+
+            </h5>
+
             <h6 class="center-align light">Пожалуйста, заполните указанные поля, чтобы выполнить регистрацию.</h6>
         </div>
     </div>
@@ -18,55 +36,59 @@
 
             <form name="CreateNewUserForm" method="POST" action="controller" class="margin30px">
 
-                <input type="hidden" name="command" value="CreateNewUser"/>
-
                 <div class="row">
 
                     <div class="input-field col s12">
-                        <input id="login" type="text" class="validate" length="16" name="username" value="">
+                        <input id="login" type="text" class="validate" length="16" name="username" value="${user.username}">
                         <label for="login">Логин (используется при входе в систему)</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" length="32" name="password" value="">
-                        <label for="password">Пароль</label>
+                        <input id="password" type="password" class="validate" length="32" name="password" value="${user.password}">
+                        <label for="password" data-error="${wrongpassword}">Пароль</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="passwordCheck" type="password" class="validate" length="32" name="passwordCheck" value="">
-                        <label for="passwordCheck">Повторите пароль:</label>
+                        <input id="passwordCheck" type="password" class="validate" length="32" name="passwordCheck" value="${user.password}">
+                        <label for="passwordCheck" data-error="${wrongpassword}">Повторите пароль:</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="name" type="text" class="validate" length="45" name="name" value="">
+                        <input id="name" type="text" class="validate" length="45" name="name" value="${user.name}">
                         <label for="name">Имя</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="surname" type="text" class="validate" length="45" name="surname" value="">
+                        <input id="surname" type="text" class="validate" length="45" name="surname" value="${user.surname}">
                         <label for="surname">Фамилия</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="patronymic" type="text" class="validate" length="45" name="patronymic" value="">
+                        <input id="patronymic" type="text" class="validate" length="45" name="patronymic" value="${user.patronymic}">
                         <label for="patronymic">Отчество (не обязательно)</label>
                     </div>
 
-                    <div class="input-field col s12">
-                        <input id="diagnosis" type="text" class="validate" length="45" name="diagnosis" value="">
-                        <label for="diagnosis">Диагноз (не обязательно)</label>
-                    </div>
 
-                    <div class="input-field col s12">
-                        <select name="status">
-                            <option value="" disabled selected>Выберите статус из списка...</option>
-                            <option value="0">Выписанный пациент</option>
-                            <option value="1">Пациент</option>
-                            <option value="2">Медсестра</option>
-                            <option value="3">Врач</option>
-                        </select>
-                        <label>Статус пользователя</label>
-                    </div>
+                    <%-- Позволять только пользователям "Врач" устанавливать диагноз и изменять статус--%>
+                    <c:if test="${currentUser.idstatus==3}">
+
+                        <div class="input-field col s12">
+                            <input id="diagnosis" type="text" class="validate" length="45" name="diagnosis" value="${user.diagnosis}">
+                            <label for="diagnosis">Диагноз (не обязательно)</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select name="status">
+                                <option value="" disabled selected>Выберите статус из списка...</option>
+                                <option value="0" ${user.idstatus == 0 ? 'selected' : ''}>Выписанный пациент</option>
+                                <option value="1" ${user.idstatus == 1 ? 'selected' : ''}>Пациент</option>
+                                <option value="2" ${user.idstatus == 2 ? 'selected' : ''}>Медсестра</option>
+                                <option value="3" ${user.idstatus == 3 ? 'selected' : ''}>Врач</option>
+                            </select>
+                            <label>Статус пользователя</label>
+                        </div>
+
+                    </c:if>
 
                     <h6 class="light center-align">
                         ${errorLoginOrPassMessage}
@@ -76,9 +98,22 @@
 
                 </div>
 
-                <button class="btn-large waves-effect waves-light width100" type="submit" name="action">
-                    Зарегистрировать пользователя
-                </button>
+                <c:choose>
+                    <c:when test="${type.equals('Регистрация нового пользователя')}">
+                        <input type="hidden" name="command" value="CreateNewUser"/>
+                        <button class="btn-large waves-effect waves-light width100" type="submit" name="action">
+                            Зарегистрировать пользователя
+                        </button>
+                    </c:when>
+                    <c:otherwise>
+                        <input type="hidden" name="command" value="UpdateUser"/>
+                        <input type="hidden" name="id" value="${user.iduser}">
+                        <button class="btn-large waves-effect waves-light width100" type="submit" name="action">
+                            Обновить информацию
+                        </button>
+                    </c:otherwise>
+                </c:choose>
+
             </form>
         </div>
     </div>
