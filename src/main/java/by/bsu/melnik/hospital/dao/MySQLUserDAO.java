@@ -22,8 +22,9 @@ public class MySQLUserDAO implements UserDAO {
             "(`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus";
+    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus ORDER BY user.status_idstatus ASC;";
     private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
+    private static final String DISCHARGE_USER = "UPDATE `hospital`.`user` SET `status_idstatus` = 0 WHERE `iduser` = ?;";
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     private static DrugDAO drugDAO = new MySQLDrugDAO();
@@ -144,16 +145,6 @@ public class MySQLUserDAO implements UserDAO {
         return user;
     }
 
-//    private void closeConnection(Connection connection){
-//        if (connection == null)
-//            return;
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//        }
-//    }
-
-    // TODO: Дописать метод получения всех пользователей.
     public List<User> findAllUsers(){
 
         List<User> users = new ArrayList<>();
@@ -183,22 +174,29 @@ public class MySQLUserDAO implements UserDAO {
         return users;
     }
 
-    public List<User> searchUserByKeyword(String keyword) {
-        return null;
+    @Override
+    public void dischargeUser(int iduser) {
+
+        Connection connection = null;
+        try {
+
+            connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(DISCHARGE_USER);
+            statement.setInt(1, iduser);
+            int count = statement.executeUpdate();
+
+            // TODO: ДОБАВИТЬ ПРОВЕРКУ НА УДАЛЕНИЕ
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            pool.releaseConnection(connection);
+        }
     }
 
-    public List<User> findAllByStatus(int status) {
-        return null;
-    }
-
-
-
-    public void insert(User user) {
-
-    }
-
-
+    @Override
     public void update(User user) {
+
 
     }
 

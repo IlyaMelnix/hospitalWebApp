@@ -23,6 +23,11 @@ public enum CommandEnum {
             this.command = new DeleteUserCommand();
         }
     },
+    DISCHARGEUSER {
+        {
+            this.command = new DischargeUserCommand();
+        }
+    },
     ADDDRUG{
         {
             this.command = new AddDrugCommand();

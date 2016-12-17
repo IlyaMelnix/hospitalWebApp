@@ -3,25 +3,49 @@
 <%-- Загрузка html, head, и начала body --%>
 <jsp:include page="header.jsp"/>
 
-    <form  name="LoginForm" method="POST" action="controller">
-        <input type="hidden" name="command" value="Login"/>
-        Логин:<br/>
-        <input type="text" name="login" value=""/>
-        <br/>Пароль:<br/>
-        <input type="password" name= "password" value=""/>
-            <br/>
-        ${errorLoginOrPassMessage}
-            <br/>
-        ${wrongAction}
-            <br/>
-        ${nullPage}
-            <br/>
+<div class="container valign-wrapper">
 
-        <button class="btn waves-effect waves-light" type="submit" name="action">Войти
-            <i class="material-icons right">send</i>
-        </button>
-    </form>
-    <hr/>
+    <div class="valign width100">
+        <div class="row">
+            <div class="col s4 offset-s4">
+            <h5 class="center-align">Пожалуйста, войдите в систему</h5>
+            <h6 class="center-align light">Чтобы войти в систему, воспользуйтесь логином и паролем, выданным Вам Вашим врачом.</h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4 offset-s4 card z-depth-5">
+
+                <form name="LoginForm" method="POST" action="controller" class="margin30px">
+                    <input type="hidden" name="command" value="Login"/>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="login" type="text" class="validate" name="login" length="45" value="">
+                            <label for="login">Логин</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate" name="password" value="">
+                            <label for="password">Пароль</label>
+                        </div>
+
+                        <h6 class="light center-align">
+                        ${errorLoginOrPassMessage}
+                        ${wrongAction}
+                        ${nullPage}
+                        </h6>
+
+                    </div>
+
+                    <button class="btn-large waves-effect waves-light width100" type="submit" name="action">
+                        Войти
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%-- Загрузка конца body, импорт js, html --%>
 <jsp:include page="footer.jsp"/>

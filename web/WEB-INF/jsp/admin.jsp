@@ -5,43 +5,16 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <div class="fixed-action-btn toolbar">
-        <a class="btn-floating btn-large red">
-            <i class="large material-icons">mode_edit</i>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red" href="controller?command=createNewUser" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">
+            <i class="large material-icons">person_add</i>
         </a>
-        <ul>
-            <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">insert_chart</i></a></li>
-            <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
-            <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">publish</i></a></li>
-            <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">attach_file</i></a></li>
-        </ul>
     </div>
     <div class="row">
         <div>
 
-            <h2>Панель администратора</h2>
-            <h3>${currentUser.name}, добрый день!</h3>
-
-            <%--<div class="row center">--%>
-                <%--<button data-target="modal1" class="btn modal-trigger">Modal</button>--%>
-            <%--</div>--%>
-            <%--<!-- Modal Structure -->--%>
-            <%--<div id="modal1" class="modal modal-fixed-footer">--%>
-                <%--<div class="modal-content">--%>
-                    <%--<h4>Modal Header</h4>--%>
-                    <%--<p>A bunch of text</p>--%>
-                <%--</div>--%>
-                <%--<div class="modal-footer">--%>
-                    <%--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<br><br>--%>
-
-
-            <a href="controller?command=Logout">Выйти из системы</a>
-            <br/>
-            <a href="controller?command=createNewUser">Зарегистрировать нового пользователя</a>
-
+            <h3>Врачебный кабинет</h3>
+            <h5>Добро пожаловать, ${currentUser.name}!</h5>
 
             <h3>${usersListMessage}</h3>
             <ul class="collapsible popout" data-collapsible="accordion">
@@ -77,7 +50,32 @@
                         </div>
 
                         <div class="user-info">
-                                <%--Удаление--%>
+
+                            <%--Изменение--%>
+                            <a class="waves-effect waves-green btn-flat" href="controller?command=updateUser&id=<c:out value="${user.iduser}"/>">Изменить пользователя</a>
+
+                            <%--Выписать пациента--%>
+                            <c:if test="${user.idstatus == 1}">
+
+                                <!-- Modal Trigger -->
+                                <a class="waves-effect waves-green btn-flat" href="#dischargeUser${user.iduser}">Выписать пациента</a>
+
+                                <!-- Modal Structure -->
+                                <div id="dischargeUser${user.iduser}" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Вы уверены, что хотите выписать пацинента ${user.name}?</h4>
+                                        <p>За пацинентом будет закреплен его окончательный диагноз.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=dischargeUser&id=<c:out value="${user.iduser}"/>">Выписать пациента</a>
+                                        <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
+                                    </div>
+                                </div>
+
+
+                            </c:if>
+
+                            <%--Удаление--%>
                             <!-- Modal Trigger -->
                             <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteUser${user.iduser}">Удалить пользователя</a>
 
@@ -119,21 +117,25 @@
                                                 </div>
                                             </div>
 
-                                            <%--Удаление --%>
+                                            <div class="col 12">
 
-                                            <!-- Modal Trigger -->
-                                            <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteDrug${drug.iddrug}">Удалить лекарство</a>
+                                                <%--Удаление --%>
 
-                                            <!-- Modal Structure -->
-                                            <div id="deleteDrug${drug.iddrug}" class="modal">
-                                                <div class="modal-content">
-                                                    <h4>Вы уверены, что хотите удалить лекарство ${drug.drugName}?</h4>
-                                                    <p>Действие не может быть отменено. Лекарство будет удалено из базы данных.</p>
+                                                <!-- Modal Trigger -->
+                                                <a class="btn white grey-text darken-4 waves-effect waves-red" href="#deleteDrug${drug.iddrug}">Удалить лекарство</a>
+
+                                                <!-- Modal Structure -->
+                                                <div id="deleteDrug${drug.iddrug}" class="modal">
+                                                    <div class="modal-content">
+                                                        <h4>Вы уверены, что хотите удалить лекарство ${drug.drugName}?</h4>
+                                                        <p>Действие не может быть отменено. Лекарство будет удалено из базы данных.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>
+                                                        <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <a class="modal-action modal-close waves-effect waves-red btn-flat" href="controller?command=deleteDrug&id=<c:out value="${drug.iddrug}"/>">Удалить лекарство</a>
-                                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" href="#">Отмена</a>
-                                                </div>
+
                                             </div>
 
                                         </div>

@@ -8,3 +8,13 @@ body{
 .user-info {
     padding: 20px;
 }
+.valign-wrapper {
+    height: 90vh;
+}
+.width100 {
+    width: 100%;
+}
+.margin30px {
+    margin: 30px;
+}
+
