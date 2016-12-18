@@ -19,7 +19,7 @@
                     selectYears: 15, // Creates a dropdown of 15 years to control year
                     today: '',
                     clear: 'Очистить',
-                    close: 'Закрыть',
+                    close: 'Принять',
                     format: 'yyyy-mm-dd'
                 });
 
