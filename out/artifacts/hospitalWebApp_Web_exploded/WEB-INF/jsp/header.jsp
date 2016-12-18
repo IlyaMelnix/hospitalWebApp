@@ -14,7 +14,7 @@
 
     <title>Система "Больница"</title>
 </head>
-<body class="grey lighten-4">
+<body class="grey lighten-3">
 
     <nav>
         <div class="nav-wrapper container">

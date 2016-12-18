@@ -5,8 +5,8 @@ body{
     padding-bottom: 0;
     padding-top: 0;
 }
-.user-info {
-    padding: 20px;
+.table-output .row {
+    margin-bottom: 5px;
 }
 .valign-wrapper {
     height: 90vh;
@@ -17,4 +17,12 @@ body{
 .margin30px {
     margin: 30px;
 }
-
+.padding30px {
+    padding: 30px;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+}
+.padding-top-10{
+    padding-top: 10px;
+}

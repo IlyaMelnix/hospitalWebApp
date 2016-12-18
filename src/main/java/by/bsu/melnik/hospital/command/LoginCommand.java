@@ -21,7 +21,7 @@ public class LoginCommand implements ActionCommand {
         String page = null;
         User currentUser = null;
 
-        // Возможно, пользователь уже в системе.
+        // Если пользователь ещё не в системе
         if (request.getSession().getAttribute("currentUser") == null){
 
             // Извлечение из запроса логина и пароля
@@ -36,9 +36,7 @@ public class LoginCommand implements ActionCommand {
             else {
 
                 request.setAttribute("toastContent", MessageManager.getProperty("message.loginerror"));
-
-                //page = "/WEB-INF/jsp/error.jsp";
-                page = ConfigurationManager.getProperty("path.page.login");
+                return ConfigurationManager.getProperty("path.page.login");
             }
         }
         else {
