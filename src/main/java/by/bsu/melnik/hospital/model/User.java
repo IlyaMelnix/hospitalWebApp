@@ -22,6 +22,8 @@ public class User {
 
     // CONSTRUCTORS
     public User() {
+        idstatus = 1;
+        diagnosis = "Здоров";
     }
     public User(int iduser, int idstatus, String status, String username, String password, String name, String surname, String patronymic, String diagnosis, List<Drug> userDrugsList, List<Operation> userOperationList, List<Procedure> userProceduresList) {
         this.iduser = iduser;

@@ -79,9 +79,9 @@
 
                         <div class="input-field col s12">
                             <select name="status">
-                                <option value="" disabled selected>Выберите статус из списка...</option>
+                                <option value="" disabled>Выберите статус из списка...</option>
                                 <option value="0" ${user.idstatus == 0 ? 'selected' : ''}>Выписанный пациент</option>
-                                <option value="1" ${user.idstatus == 1 ? 'selected' : ''}>Пациент</option>
+                                <option value="1" selected ${user.idstatus == 1 ? 'selected' : ''}>Пациент</option>
                                 <option value="2" ${user.idstatus == 2 ? 'selected' : ''}>Медсестра</option>
                                 <option value="3" ${user.idstatus == 3 ? 'selected' : ''}>Врач</option>
                             </select>

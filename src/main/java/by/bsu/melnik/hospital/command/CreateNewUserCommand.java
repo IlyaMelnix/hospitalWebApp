@@ -87,7 +87,10 @@ public class CreateNewUserCommand implements ActionCommand {
             request.setAttribute("toastContent", MessageManager.getProperty("message.usercreated"));
 
             // Обновление списка пользователей
-            request.getSession().setAttribute("users", userDAO.findAllUsers());
+            request.getSession().setAttribute("dischargedPatients", userDAO.findAllUsersByStatus(0));
+            request.getSession().setAttribute("patients", userDAO.findAllUsersByStatus(1));
+            request.getSession().setAttribute("nurses", userDAO.findAllUsersByStatus(2));
+            request.getSession().setAttribute("doctors", userDAO.findAllUsersByStatus(3));
             page = ConfigurationManager.getProperty("path.page.admin");
 
         } else {

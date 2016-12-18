@@ -71,6 +71,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>user-output</servlet-name>
+        <jsp-file>/WEB-INF/jsp/user-output.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user-output</servlet-name>
+        <url-pattern>/user-output</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>create-new-user</servlet-name>
         <jsp-file>/WEB-INF/jsp/create-new-user.jsp</jsp-file>
     </servlet>

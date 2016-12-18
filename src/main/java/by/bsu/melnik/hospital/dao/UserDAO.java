@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    public List<User> findAllUsers();
+    public List<User> findAllUsersByStatus(int idstatus);
     public User findUserByID(int iduser);
     public User searchUserByUsernameAndPassword(String username, String password);
     public User createNewUser(String username, String password, String name, String surname, String patronymic, String diagnosis, int status);

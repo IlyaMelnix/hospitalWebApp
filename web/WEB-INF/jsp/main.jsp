@@ -62,16 +62,7 @@
                                                 <p>${drug.drugDosing}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col s12">
-                                                <a class="waves-effect waves-green btn-flat">Выписать пациента</a>
-                                                <a class="waves-effect waves-green btn-flat">Выписать пациента</a>
-                                                <a class="waves-effect waves-green btn-flat">Выписать пациента</a>
-                                            </div>
-                                        </div>
-
                                     </div>
-
                                 </div>
                             </li>
                         </c:forEach>
@@ -169,7 +160,7 @@
                 </c:when>
                 <c:otherwise>
 
-                    <h5 class="light">Вам не было назначено процедур.</h5>
+                    <h6 class="light">Вам не было назначено процедур.</h6>
 
                 </c:otherwise>
             </c:choose>
@@ -230,7 +221,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </li>
                         </c:forEach>

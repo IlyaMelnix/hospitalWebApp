@@ -22,7 +22,7 @@ public class MySQLUserDAO implements UserDAO {
             "(`username`, `password`, `name`, `surname`, `patronymic`, `diagnosis`, `status_idstatus`) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus;";
+    private static final String FIND_ALL_USERS_BY_STATUS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus WHERE user.status_idstatus = ? ;";
     //private static final String FIND_ADD_USERS = "SELECT * FROM user INNER JOIN STATUS ON user.status_idstatus = status.idstatus ORDER BY user.status_idstatus ASC;";
     private static final String DELETE_USER_BY_ID = "delete from user where iduser =?;";
     private static final String DISCHARGE_USER = "UPDATE `hospital`.`user` SET `status_idstatus` = 0 WHERE `iduser` = ?;";
@@ -149,7 +149,7 @@ public class MySQLUserDAO implements UserDAO {
         return user;
     }
 
-    public List<User> findAllUsers(){
+    public List<User> findAllUsersByStatus(int idstatus){
 
         List<User> users = new ArrayList<>();
         Connection connection = null;
@@ -158,8 +158,9 @@ public class MySQLUserDAO implements UserDAO {
 
             connection = pool.getConnection();
 
-            PreparedStatement statement = connection.prepareStatement(FIND_ADD_USERS);
-            ResultSet resultSet = statement.executeQuery(FIND_ADD_USERS);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_USERS_BY_STATUS);
+            preparedStatement.setInt(1, idstatus);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
 

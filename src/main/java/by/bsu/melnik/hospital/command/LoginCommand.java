@@ -47,7 +47,12 @@ public class LoginCommand implements ActionCommand {
         if (currentUser.getIdstatus() < 2)
             page = ConfigurationManager.getProperty("path.page.main");
         else {
-            request.getSession().setAttribute("users", userDAO.findAllUsers());
+
+            // Получить списки пользователей
+            request.getSession().setAttribute("dischargedPatients", userDAO.findAllUsersByStatus(0));
+            request.getSession().setAttribute("patients", userDAO.findAllUsersByStatus(1));
+            request.getSession().setAttribute("nurses", userDAO.findAllUsersByStatus(2));
+            request.getSession().setAttribute("doctors", userDAO.findAllUsersByStatus(3));
             page = ConfigurationManager.getProperty("path.page.admin");
         }
 

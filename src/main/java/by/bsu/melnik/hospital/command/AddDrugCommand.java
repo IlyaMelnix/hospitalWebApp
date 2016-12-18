@@ -42,7 +42,10 @@ public class AddDrugCommand implements ActionCommand{
         if (drugDAO.AddDrug(drugname, drugdesc, drugdosing, iduser)){
             request.setAttribute("toastContent", MessageManager.getProperty("message.drugadded"));
             // Обновление списка пользователей
-            request.getSession().setAttribute("users", userDAO.findAllUsers());
+            request.getSession().setAttribute("dischargedPatients", userDAO.findAllUsersByStatus(0));
+            request.getSession().setAttribute("patients", userDAO.findAllUsersByStatus(1));
+            request.getSession().setAttribute("nurses", userDAO.findAllUsersByStatus(2));
+            request.getSession().setAttribute("doctors", userDAO.findAllUsersByStatus(3));
 
         }
         else{
