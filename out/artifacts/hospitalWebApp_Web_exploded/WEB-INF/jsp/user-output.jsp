@@ -530,7 +530,7 @@
 
                                         <div class="modal-content">
 
-                                            <h4>Новая процедура для: ${user.name} ${user.surname} </h4>
+                                            <h4>Новая операция для: ${user.name} ${user.surname} </h4>
                                             <h5>Диагноз: ${user.diagnosis} </h5>
 
                                             <input type="hidden" name="command" value="AddOperation"/>

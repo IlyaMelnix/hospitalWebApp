@@ -1,8 +1,10 @@
 package by.bsu.melnik.hospital.command;
 
-import by.bsu.melnik.hospital.ConfigurationManager;
-import by.bsu.melnik.hospital.MessageManager;
+import by.bsu.melnik.hospital.manager.ConfigurationManager;
+import by.bsu.melnik.hospital.manager.MessageManager;
 import by.bsu.melnik.hospital.dao.*;
+import by.bsu.melnik.hospital.dao.mysql.MySQLOperationDAO;
+import by.bsu.melnik.hospital.dao.mysql.MySQLUserDAO;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,7 +33,7 @@ public class AddOperationCommand implements ActionCommand {
         if (request.getParameter(ID_USER) == null ||
                 operationName == null || operationName.equals("") ||
                 operationDesc == null || operationDesc.equals("")) {
-            request.setAttribute("toastContent", MessageManager.getProperty("message.procedurenotadded"));
+            request.setAttribute("toastContent", MessageManager.getProperty("message.operationnotadded"));
             return page;
         }
 

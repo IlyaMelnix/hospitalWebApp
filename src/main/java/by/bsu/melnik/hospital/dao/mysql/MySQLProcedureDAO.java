@@ -1,5 +1,7 @@
-package by.bsu.melnik.hospital.dao;
+package by.bsu.melnik.hospital.dao.mysql;
 
+import by.bsu.melnik.hospital.dao.ConnectionPool;
+import by.bsu.melnik.hospital.dao.ProcedureDAO;
 import by.bsu.melnik.hospital.model.Procedure;
 
 import java.sql.Connection;

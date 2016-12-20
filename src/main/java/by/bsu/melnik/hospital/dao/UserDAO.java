@@ -1,10 +1,5 @@
 package by.bsu.melnik.hospital.dao;
 
-/**
- *  A simple interface for UserDAO
- *  that encapsulates all the data access by the web application.
- */
-
 import by.bsu.melnik.hospital.model.User;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package by.bsu.melnik.hospital;
+package by.bsu.melnik.hospital.manager;
 
 import java.util.ResourceBundle;
 

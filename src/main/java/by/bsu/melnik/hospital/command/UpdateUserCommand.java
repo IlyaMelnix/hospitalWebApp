@@ -1,9 +1,9 @@
 package by.bsu.melnik.hospital.command;
 
 
-import by.bsu.melnik.hospital.ConfigurationManager;
-import by.bsu.melnik.hospital.MessageManager;
-import by.bsu.melnik.hospital.dao.MySQLUserDAO;
+import by.bsu.melnik.hospital.manager.ConfigurationManager;
+import by.bsu.melnik.hospital.manager.MessageManager;
+import by.bsu.melnik.hospital.dao.mysql.MySQLUserDAO;
 import by.bsu.melnik.hospital.dao.UserDAO;
 import by.bsu.melnik.hospital.model.User;
 

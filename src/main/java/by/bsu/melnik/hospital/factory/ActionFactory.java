@@ -4,7 +4,7 @@ package by.bsu.melnik.hospital.factory;
 import by.bsu.melnik.hospital.command.ActionCommand;
 import by.bsu.melnik.hospital.command.EmptyCommand;
 import by.bsu.melnik.hospital.command.client.CommandEnum;
-import by.bsu.melnik.hospital.MessageManager;
+import by.bsu.melnik.hospital.manager.MessageManager;
 
 import javax.servlet.http.HttpServletRequest;
 

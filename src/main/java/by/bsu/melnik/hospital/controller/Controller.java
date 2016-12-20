@@ -2,8 +2,8 @@ package by.bsu.melnik.hospital.controller;
 
 import by.bsu.melnik.hospital.command.ActionCommand;
 import by.bsu.melnik.hospital.factory.ActionFactory;
-import by.bsu.melnik.hospital.ConfigurationManager;
-import by.bsu.melnik.hospital.MessageManager;
+import by.bsu.melnik.hospital.manager.ConfigurationManager;
+import by.bsu.melnik.hospital.manager.MessageManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
