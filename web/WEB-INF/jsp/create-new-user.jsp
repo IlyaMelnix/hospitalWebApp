@@ -11,20 +11,7 @@
 
 
             <h5 class="center-align">
-
-                <%--
-                    TYPE ENUM:
-                    finish = 0
-                    create = 1
-                    update = 2
-                    updateCurrent = 3
-                --%>
-                <%--<c:if test="${type == 1}">Регистрация нового пользователя</c:if>--%>
-                <%--<c:if test="${type == 2}">Редактирование пользователя</c:if>--%>
-                <%--<c:if test="${type == 3}">Редактирование вашего профиля</c:if>--%>
-
                 ${type}
-
             </h5>
 
             <h6 class="center-align light">Пожалуйста, заполните указанные поля, чтобы выполнить регистрацию.</h6>

@@ -11,6 +11,15 @@
 
     <div class="row">
         <div class="col l3 s12">
+            <h5 class="light">Ваш диагноз</h5>
+        </div>
+        <div class="col l9 s12">
+            <h5>${currentUser.diagnosis}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col l3 s12">
             <h5 class="light">Ваши лекарства</h5>
         </div>
         <div class="col l9 s12">
