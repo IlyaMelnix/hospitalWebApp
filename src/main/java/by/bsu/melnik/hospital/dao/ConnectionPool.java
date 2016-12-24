@@ -15,6 +15,7 @@ public class ConnectionPool {
     private static final String URL = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
+
     private static ConnectionPool instance;
 
     private BlockingQueue<Connection> queue;
@@ -23,12 +24,13 @@ public class ConnectionPool {
         this.queue = new ArrayBlockingQueue<>(5);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            for (int i = 0; i < 6; i++){
+            for (int i = 0; i < 5; i++){
 
                 Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 this.queue.put(connection);
             }
         } catch (ClassNotFoundException | InterruptedException | SQLException e) {
+            System.out.println("/n/n/n=============================================================== /n ERROR /n/n=============================================================== ");
             throw new RuntimeException(e);
         }
     }
