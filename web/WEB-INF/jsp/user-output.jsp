@@ -236,21 +236,21 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="drugname" type="text" class="validate" name="drugname" length="45">
+                                            <input id="drugname" type="text" class="validate" name="drugname" length="45" required>
                                             <label for="drugname">Название лекарства</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="drugdesc" class="materialize-textarea validate" name="drugdesc"></textarea>
+                                            <textarea id="drugdesc" class="materialize-textarea validate" name="drugdesc" required></textarea>
                                             <label for="drugdesc">Описание лекарства</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="drugdosing" class="materialize-textarea validate" name="drugdosing"></textarea>
+                                            <textarea id="drugdosing" class="materialize-textarea validate" name="drugdosing" required></textarea>
                                             <label for="drugdosing">Способ применения</label>
                                         </div>
                                     </div>
@@ -387,21 +387,21 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="procedureName" type="text" class="validate" name="procedureName" length="45">
+                                            <input id="procedureName" type="text" class="validate" name="procedureName" length="45" required>
                                             <label for="procedureName">Название процедуры</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="procedureDesc" class="materialize-textarea validate" name="procedureDesc"></textarea>
+                                            <textarea id="procedureDesc" class="materialize-textarea validate" name="procedureDesc" required></textarea>
                                             <label for="procedureDesc">Описание процедуры</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="procedureDuration" type="number" class="validate" name="procedureDuration" length="10">
+                                            <input id="procedureDuration" type="number" class="validate" name="procedureDuration" length="10" required>
                                             <label for="procedureDuration">Продолжительность процедуры (в минутах)</label>
                                         </div>
                                     </div>
@@ -409,13 +409,13 @@
                                     <div class="row">
                                         <div class="col s12">
                                             <label for="procedureStartDate">Дата начала</label>
-                                            <input id="procedureStartDate" type="date" class="datepicker" name="procedureStartDate">
+                                            <input id="procedureStartDate" type="date" class="datepicker" name="procedureStartDate" required>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="procedureHowManyTimes" type="number" class="validate" name="procedureHowManyTimes" length="10">
+                                            <input id="procedureHowManyTimes" type="number" class="validate" name="procedureHowManyTimes" length="10" required>
                                             <label for="procedureHowManyTimes">Количество раз</label>
                                         </div>
                                     </div>
@@ -538,14 +538,14 @@
 
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="operationName" type="text" class="validate" name="operationName" length="45">
+                                                    <input id="operationName" type="text" class="validate" name="operationName" length="45" required>
                                                     <label for="operationName">Название операции</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <textarea id="operationDesc" class="materialize-textarea validate" name="operationDesc"></textarea>
+                                                    <textarea id="operationDesc" class="materialize-textarea validate" name="operationDesc" required></textarea>
                                                     <label for="operationDesc">Описание операции</label>
                                                 </div>
                                             </div>
@@ -553,7 +553,7 @@
                                             <div class="row">
                                                 <div class="col s12">
                                                     <label for="operationDate">Дата выполнения</label>
-                                                    <input id="operationDate" type="date" class="datepicker" name="operationDate">
+                                                    <input id="operationDate" type="date" class="datepicker" name="operationDate" required>
                                                 </div>
                                             </div>
 

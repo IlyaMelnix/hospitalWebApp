@@ -26,27 +26,27 @@
                 <div class="row">
 
                     <div class="input-field col s12">
-                        <input id="username" type="text" class="validate" length="16" name="username" value="${user.username}">
+                        <input id="username" type="text" class="validate" length="16" name="username" value="${user.username}" required >
                         <label for="username">Логин (используется при входе в систему)</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" length="32" name="password" value="${user.password}">
+                        <input id="password" type="password" class="validate" length="32" name="password" value="${user.password}" required>
                         <label for="password" data-error="${wrongpassword}">Пароль</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="passwordCheck" type="password" class="validate" length="32" name="passwordCheck" value="${user.password}">
+                        <input id="passwordCheck" type="password" class="validate" length="32" name="passwordCheck" value="${user.password}" required>
                         <label for="passwordCheck" data-error="${wrongpassword}">Повторите пароль:</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="name" type="text" class="validate" length="45" name="name" value="${user.name}">
+                        <input id="name" type="text" class="validate" length="45" name="name" value="${user.name}" required>
                         <label for="name">Имя</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="surname" type="text" class="validate" length="45" name="surname" value="${user.surname}">
+                        <input id="surname" type="text" class="validate" length="45" name="surname" value="${user.surname}" required>
                         <label for="surname">Фамилия</label>
                     </div>
 
